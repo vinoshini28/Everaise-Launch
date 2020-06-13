@@ -12,7 +12,7 @@ export default class Chat extends Component {
       viewShown: false,
       view: "users",
       user: "",
-      role: "admin",
+      role: "student",
     };
     this.toggleView = this.toggleView.bind(this);
     this.setUser = this.setUser.bind(this);
@@ -28,7 +28,7 @@ export default class Chat extends Component {
     //if new message and view === false, set read false
 
     //admin
-    
+
 
   }
   setUser(i) {
