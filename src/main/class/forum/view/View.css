@@ -1,0 +1,167 @@
+.Form-Style {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.Text-Box {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.Label {
+  color: black;
+}
+
+.OpenForum {
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  margin: 15px;
+  border-radius: 0px;
+  border-spacing: 5px;
+  cursor: pointer;
+}
+
+.OpenForum > .overlay {
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.OpenForum:hover > .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.Open-Forum-label {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Roboto", Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* .MathI {
+  background-color: #76a5af;
+  box-shadow: 0 9px #1c4f5d;
+}
+.MathI:hover {
+  background-color: #1c4f5d;
+}
+
+.MathII {
+  background-color: #ed4333;
+  box-shadow: 0 9px #962a1d;
+}
+.MathII:hover {
+  background-color: #962a1d;
+}
+
+.PhysicsMechanics {
+  background-color: #3c78d8;
+  box-shadow: 0 9px #1c4587;
+}
+.PhysicsMechanics:hover {
+  background-color: #1c4587;
+}
+
+.Linguistics {
+  background-color: #f1803a;
+  box-shadow: 0 9px #9a5222;
+}
+.Linguistics:hover {
+  background-color: #9a5222;
+}
+
+.Astronomy {
+  background-color: #cd2f2a;
+  box-shadow: 0 9px #852018;
+}
+.Astronomy:hover {
+  background-color: #852018;
+}
+
+.Biology {
+  background-color: #50ae2b;
+  box-shadow: 0 9px #2b6414;
+}
+.Biology:hover {
+  background-color: #2b6414;
+} */
+
+.Forum-Pencil {
+  color: #ffffff;
+  text-align: right;
+  font-family: "Roboto", Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  border-spacing: 30px;
+  column-count: 3;
+  column-gap: 40px;
+}
+
+.column {
+  flex: 50%;
+  column-gap: 40px;
+}
+
+.Post {
+  padding: 14px 20px;
+  margin-top: 16px;
+  background-color: var(--single-button);
+  position: relative;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  column-width: 90%;
+  float: right;
+  transition: background-color 300ms;
+}
+.Post:hover {
+  background-color: var(--single-button-hover);
+}
+
+.Close {
+  padding: 14px 20px;
+  margin-top: 16px;
+  border: none;
+
+  background-color: red;
+  position: relative;
+
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.Close:hover {
+  background-color: #b30000;
+}
+
+.Post:hover {
+  background-color: #2f3337;
+}
+
+.list-thing {
+  float: left;
+}
+.mce-notification {
+  display: none !important;
+}
+.tox-notification {
+  display: none !important;
+}

@@ -1,0 +1,242 @@
+.Form-Style {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.Text-Box {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.OpenForum {
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  margin: 15px;
+  border-spacing: 5px;
+  cursor: pointer;
+  transition: filter 200ms;
+  width: 400px;
+}
+
+.OpenForumno {
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  margin: 15px;
+  border-spacing: 5px;
+  cursor: not-allowed;
+  width: 400px;
+}
+
+.OpenForum:hover {
+  filter: brightness(0.6);
+}
+
+.Open-Forum-label {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  position: absolute;
+  font-size: 24px;
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto", Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+@media only screen and (max-width: 600px) {
+  .row {
+    border-spacing: 30px;
+    column-count: 2;
+    display: flexbox;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .row {
+    border-spacing: 30px;
+    column-count: 2;
+    display: flexbox;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .row {
+    border-spacing: 30px;
+    column-count: 2;
+    display: flexbox;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .row {
+    border-spacing: 30px;
+    column-count: 2;
+    display: flexbox;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .row {
+    border-spacing: 30px;
+    column-count: 2;
+    display: flexbox;
+    flex-direction: row;
+  }
+}
+
+.column {
+  flex: 50%;
+  column-gap: 400px;
+}
+
+.Post {
+  padding: 14px 20px;
+  margin-top: 16px;
+  background-color: #5a6268;
+  position: relative;
+
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  column-width: 90%;
+  float: right;
+}
+
+.Close {
+  padding: 14px 20px;
+  margin-top: 16px;
+  border: none;
+
+  background-color: red;
+  position: relative;
+
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.Close:hover {
+  background-color: #b30000;
+}
+
+.Post:hover {
+  background-color: #2f3337;
+}
+
+.subjectContainer {
+  top: 50px;
+}
+
+.signinhead {
+  text-align: center;
+  font-family: "Roboto", Roboto, sans-serif;
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.signinwithgoogle {
+  padding-top: 5px;
+  padding-left: 0px;
+  float: center;
+  transition: filter 300ms;
+}
+
+.signinwithgoogle:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
+}
+
+/* svg {
+  width: 35px;
+  height: 35px;
+} */
+
+.headerlabel {
+  font-size: 36px;
+}
+
+.signinwithemail:hover {
+  cursor: not-allowed;
+}
+
+.signup {
+  padding-top: 100%;
+  color: white;
+  position: relative;
+
+  padding-left: 100px;
+  padding: 0px 20px;
+  border: none;
+  margin: 8px 0;
+  width: 0;
+  cursor: pointer;
+  transition: filter 200ms;
+}
+
+.signup:hover {
+  filter: brightness(0.6);
+}
+
+form {
+  --text-color: black;
+  /* max-width: 500px; */
+}
+.field {
+  position: relative;
+  border-bottom: 2px dotted lightgray;
+  margin-top: 2.5rem;
+  margin-left: 0.3rem;
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.input {
+  outline: none;
+  border: none;
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #f0ecec;
+  padding: 0.25rem 0;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.input:valid {
+  color: #707070;
+}
+.input:invalid {
+  color: #cc0000;
+}
+.field::after {
+  content: "";
+  position: relative;
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: black;
+  transform: scaleX(0);
+  transform-origin: 0%;
+  transition: transform 500ms ease;
+  top: 1px;
+}
+.field:focus-within {
+  border-color: transparent;
+}
+.field:focus-within::after {
+  transform: scaleX(1);
+}
+
+

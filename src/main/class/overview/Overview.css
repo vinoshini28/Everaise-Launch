@@ -1,0 +1,90 @@
+.pdfContainer {
+  background-color: azure;
+}
+
+.OverviewContent {
+  padding-top: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  padding: 0;
+  width: 100%;
+}
+
+td,
+th {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:first-child {
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+td:nth-child(1) {
+  width: 10%;
+}
+td:nth-child(2) {
+  width: 10%;
+  text-align: left;
+}
+td:nth-child(3) {
+  width: 80%;
+  text-align: left;
+}
+
+.forumiconhuh svg {
+  width: 35px;
+  height: 35px;
+}
+
+.Forum-icon svg {
+  width: 70px;
+  height: 70px;
+  float: right;
+  padding-right: 20px;
+}
+
+.rowprime {
+  flex-direction: row !important;
+}
+
+.CardHeadinner {
+  width: 60vw;
+  box-shadow: 0 9px;
+  padding: 14px 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+  border-spacing: 5px;
+
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 0px;
+  width: calc(100% - 80px) !important;
+}
+
+.CardBodyinner {
+  background-color: var(--cardbg1);
+  width: 60vw;
+  padding: 14px 20px;
+  border: var(--bg) 1px;
+
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  border-radius: 0px;
+  border-spacing: 5px;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: calc(100% - 80px) !important;
+}

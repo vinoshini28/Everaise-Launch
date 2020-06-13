@@ -1,0 +1,65 @@
+.Text-Box-Form {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  cursor: text;
+  float: left;
+  font-family: "Roboto", Roboto, sans-serif;
+}
+
+.Label {
+  color: black;
+}
+
+.Submit {
+  padding: 14px 20px;
+  text-align: left;
+  width: 20%;
+  background-color: var(--single-button);
+  color: white;
+  float: right;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
+
+.Submit:hover {
+  background-color: var(--single-button-hover);
+}
+
+.Cancel {
+  padding: 14px 20px;
+  text-align: left;
+
+  width: 20%;
+
+  background-color: var(--failure);
+  color: white;
+
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
+
+.Cancel:hover {
+  background-color: var(--failure-hover);
+}
+
+.Post-buttons {
+  color: #f0ecec;
+  text-align: center;
+  font-family: "Roboto", Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.mce-notification {
+  display: none !important;
+}
+.tox-notification {
+  display: none !important;
+}

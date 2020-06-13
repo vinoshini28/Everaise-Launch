@@ -1,0 +1,63 @@
+.Nav-Logo:hover {
+  background: #cccaca;
+  color: white;
+  border-radius: 1px;
+  border-spacing: 5px;
+  cursor: pointer;
+}
+
+.Nav-Button {
+  padding-left: 40px;
+  padding-right: 40px;
+
+  margin-right: 0px;
+  margin-left: 0px;
+  border: 1px solid #cccccc;
+  border-radius: 0px;
+  border-spacing: 5px;
+  cursor: pointer;
+
+  transition: filter 300ms;
+}
+
+.Nav-Button:hover {
+  filter: brightness(0.2);
+}
+
+p.Nav-Button-label {
+  color: black;
+  font-weight: 300;
+  border: black;
+  text-align: center;
+  font-family: "Roboto", Roboto, sans-serif;
+  font-size: 18px;
+}
+
+.flex-container {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: #efefef;
+  box-shadow: 0 9px #cccccc;
+}
+
+.logo {
+  height: 61px;
+  width: 61px;
+  padding: 0px;
+  background-size: 50px 50px;
+}
+
+.logo:hover {
+  filter: brightness(80%);
+}
+
+.icon-button svg {
+  fill: var(--text-color);
+  width: 20px;
+  height: 20px;
+}
+
+

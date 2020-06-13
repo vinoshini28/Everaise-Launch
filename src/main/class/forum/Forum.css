@@ -1,0 +1,32 @@
+.Nav-Button-forum {
+  width: 30px;
+  margin: 8px 0;
+  margin: 15px;
+  border: none;
+  border-radius: 0px;
+  border-spacing: 5px;
+  cursor: pointer;
+}
+
+.Nav-Button-forum:hover {
+  background-color: #cccccc;
+  border-radius: 1px;
+  border-spacing: 5px;
+  cursor: pointer;
+}
+
+.Nav-Button-label-forum {
+  color: #000000;
+  font-style: bold;
+
+  text-align: center;
+  font-family: "Roboto", Roboto, sans-serif;
+  font-size: 24px;
+}
+
+.mce-notification {
+  display: none !important;
+}
+.tox-notification {
+  display: none !important;
+}

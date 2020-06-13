@@ -1,0 +1,48 @@
+.CardBody {
+  background-color: var(--cardbg1);
+  width: 60vw;
+  padding: 14px 20px;
+  border: var(--bg) 1px;
+
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  border-radius: 0px;
+  border-spacing: 5px;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  min-width: 400px;
+}
+
+.CardBodyText {
+  text-align: left;
+  font-size: 16px;
+  color: black;
+  font-weight: 500;
+}
+
+.CardHead {
+  width: 60vw;
+  box-shadow: 0 9px;
+  padding: 14px 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+  border-spacing: 5px;
+
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 0px;
+  min-width: 400px;
+}
+
+.CardHeadText {
+  text-align: left;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
