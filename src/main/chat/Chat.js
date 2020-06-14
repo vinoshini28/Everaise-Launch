@@ -1,7 +1,9 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { ReactComponent as I } from "../../img/icons/i.svg";
 import { ReactComponent as Back } from "../../img/icons/chevron-left-solid.svg";
 import { Formik } from "formik";
+import * as firebase from "firebase";
+
 // import { CSSTransition } from "react-transition-group";
 import "./Chat.css";
 
@@ -13,24 +15,58 @@ export default class Chat extends Component {
       view: "users",
       user: "",
       role: "student",
+      uid: "",
+      chats: {},
+      message: "",
     };
     this.toggleView = this.toggleView.bind(this);
     this.setUser = this.setUser.bind(this);
     this.displayStudent = this.displayStudent.bind(this);
     this.displayView = this.displayView.bind(this);
-    this.displayUsers = this.displayUsers.bind(this);
-    this.displayChat = this.displayChat.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
+
+    this.setTextInputRef = React.createRef();
   }
 
-  componentDidUpdate(){
-    //student
-    //check if view === true, if so set read true
-    //if new message and view === false, set read false
+  componentDidUpdate() {
+    if (this.state.role === "student") {
+      if (this.state.viewShown) {
+        var chats = document.getElementById("chats");
+        chats.scrollTop = chats.scrollHeight;
+      }
+      //set chat to read if opened
+      // firebase
+      //   .database()
+      //   .ref()
+      //   .child("user_metadata")
+      //   .child(firebase.auth().currentUser.uid)
+      //   .set({
+      //     read: true,
+      //   });
+    }
 
     //admin
-
-
+    //check if view === chat, if true and current users chat to read
+    //if new message from user_i and view !== chat or view === chat and user !== user_i
+    //set read false
+    //add a listener on /chat/
+    //if new message from user_i and viww === chat and user === user_i, scroll to bottom and set chat to read
+    //when open user_i, load all chats
   }
+  componentDidMount() {
+    firebase
+      .database()
+      .ref()
+      .child("chat")
+      .child(firebase.auth().currentUser.uid)
+      .on("value", (snap) => {
+        this.setState({
+          chats: snap.val(),
+        });
+      });
+  }
+
   setUser(i) {
     //pass as uid
     this.setState({
@@ -51,98 +87,49 @@ export default class Chat extends Component {
     });
   }
   displayStudent() {
+    var cl = [];
+    for (var i in this.state.chats) {
+      if (this.state.chats[i].sentBy === "student") {
+        cl.push(
+          <li className="sent" key={"message" + i}>
+            {this.state.chats[i].message}
+          </li>
+        );
+      } else {
+        cl.push(
+          <li className="received" key={"message" + i}>
+            {this.state.chats[i].message}
+          </li>
+        );
+      }
+    }
     return (
       <>
         <div className="chat-open" id="chat-open">
           <div className="chat-container">
-            <ul className="chats">
-              {" "}
-              <li className="sent">Message 1</li>
-              <li className="received">
-                {" "}
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book it has?
-              </li>
-              <li className="received">
-                {" "}
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book it has?
-              </li>
-              <li className="received">
-                {" "}
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book it has?
-              </li>
-              <li className="received">
-                {" "}
-                Lorem Ipsum is simply dummy text of the printing and standard
-                dummy text ever since the 1500s when an unknown typesetting
-                industry Lorem Ipsum has been the industry's printer took a
-                galley of type and scrambled it to make a type specimen book it
-                has?
-              </li>
-              <li className="received">
-                {" "}
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book it has?
-              </li>
-              <li className="sent">
-                {" "}
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book it has?
-              </li>
-              <li className="received">
-                {" "}
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book it has?
-              </li>
-              <li className="received">
-                {" "}
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book it has?
-              </li>
-              <li className="sent">Message 3</li>
-              <li className="received">Message 4</li>
+            <ul className="chats" id="chats">
+              {cl}
             </ul>
           </div>
         </div>
         {/*  */}
         <Formik
           initialValues={{
-            username: this.state.user,
-            uid: this.state.uid,
+            username: "",
             sentBy: "student",
             message: "",
-            read: false,
           }}
           onSubmit={(values, actions) => {
             try {
-              alert(JSON.stringify(values, 2));
-              // firebase
-              //   .database()
-              //   .ref()
-              //   .child(
-              //     this.state.subject.toLowerCase() + "forumpostsfull"
-              //   )
-              //   .child(this.state.zoom)
-              //   .child("replies")
-              //   .push(values["post"]);
-
+              var uid = firebase.auth().currentUser.uid;
+              firebase.database().ref().child("chat").child(uid).push({
+                sentBy: values.sentBy,
+                uid: uid,
+                username: "",
+                message: values.message,
+              });
               actions.setSubmitting(false);
+              this.setTextInputRef.current.value = "";
             } catch (err) {
               console.log(err);
             }
@@ -160,6 +147,8 @@ export default class Chat extends Component {
             <form onSubmit={handleSubmit}>
               <input
                 id="message"
+                ref={this.setTextInputRef}
+                type="text"
                 value={values.message}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -170,6 +159,7 @@ export default class Chat extends Component {
             </form>
           )}
         </Formik>
+        {/*  */}
       </>
     );
   }
@@ -205,6 +195,22 @@ export default class Chat extends Component {
             );
 
           case "chat":
+            var cl = [];
+            for (var i in this.state.chats) {
+              if (this.state.chats[i].sentBy === "admin") {
+                cl.push(
+                  <li className="sent" key={"message" + i}>
+                    {this.state.chats[i].message}
+                  </li>
+                );
+              } else {
+                cl.push(
+                  <li className="received" key={"message" + i}>
+                    {this.state.chats[i].message}
+                  </li>
+                );
+              }
+            }
             return (
               <>
                 <div className="chat-open" id="chat-open">
@@ -212,101 +218,29 @@ export default class Chat extends Component {
                     <Back></Back>
                   </a>
                   <div className="chat-container">
-                    <ul className="chats">
-                      {" "}
-                      <li className="sent">Message 1</li>
-                      <li className="received">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s when an unknown
-                        printer took a galley of type and scrambled it to make a
-                        type specimen book it has?
-                      </li>
-                      <li className="received">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s when an unknown
-                        printer took a galley of type and scrambled it to make a
-                        type specimen book it has?
-                      </li>
-                      <li className="received">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s when an unknown
-                        printer took a galley of type and scrambled it to make a
-                        type specimen book it has?
-                      </li>
-                      <li className="received">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        standard dummy text ever since the 1500s when an unknown
-                        typesetting industry Lorem Ipsum has been the industry's
-                        printer took a galley of type and scrambled it to make a
-                        type specimen book it has?
-                      </li>
-                      <li className="received">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s when an unknown
-                        printer took a galley of type and scrambled it to make a
-                        type specimen book it has?
-                      </li>
-                      <li className="sent">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s when an unknown
-                        printer took a galley of type and scrambled it to make a
-                        type specimen book it has?
-                      </li>
-                      <li className="received">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s when an unknown
-                        printer took a galley of type and scrambled it to make a
-                        type specimen book it has?
-                      </li>
-                      <li className="received">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s when an unknown
-                        printer took a galley of type and scrambled it to make a
-                        type specimen book it has?
-                      </li>
-                      <li className="sent">Message 3</li>
-                      <li className="received">Message 4</li>
+                    <ul className="chats" id="chats">
+                      {cl}
                     </ul>
                   </div>
                 </div>
                 {/*  */}
                 <Formik
                   initialValues={{
-                    username: this.props.user,
-                    uid: 35149,
+                    username: "",
                     sentBy: "admin",
                     message: "",
-                    read: false,
                   }}
                   onSubmit={(values, actions) => {
                     try {
-                      alert(JSON.stringify(values, 2));
-                      // firebase
-                      //   .database()
-                      //   .ref()
-                      //   .child(
-                      //     this.state.subject.toLowerCase() + "forumpostsfull"
-                      //   )
-                      //   .child(this.state.zoom)
-                      //   .child("replies")
-                      //   .push(values["post"]);
-
+                      var uid = firebase.auth().currentUser.uid;
+                      firebase.database().ref().child("chat").child(uid).push({
+                        sentBy: values.sentBy,
+                        uid: uid,
+                        username: "",
+                        message: values.message,
+                      });
                       actions.setSubmitting(false);
+                      this.setTextInputRef.current.value = "";
                     } catch (err) {
                       console.log(err);
                     }
@@ -324,6 +258,8 @@ export default class Chat extends Component {
                     <form onSubmit={handleSubmit}>
                       <input
                         id="message"
+                        ref={this.setTextInputRef}
+                        type="text"
                         value={values.message}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -343,117 +279,6 @@ export default class Chat extends Component {
       }
     } else {
       return false;
-    }
-  }
-  displayUsers() {
-    if (this.state.view === "users") {
-      return (
-        <>
-          <div className="chat-open" id="chat-open">
-            <ul className="users-container">
-              <li className="user" onClick={this.setUser.bind(this, 1)}>
-                User 1
-              </li>
-              <li className="user" onClick={this.setUser.bind(this, 2)}>
-                User 2
-              </li>
-              <li className="user" onClick={this.setUser.bind(this, 3)}>
-                User 3
-              </li>
-              <li className="user" onClick={this.setUser.bind(this, 4)}>
-                User 4
-              </li>
-            </ul>
-          </div>
-        </>
-      );
-    }
-  }
-  displayChat() {
-    if (this.state.view === "chat") {
-      return (
-        <>
-          <div className="chat-open" id="chat-open">
-            <div className="chat-container">
-              <ul className="chats">
-                {" "}
-                <li className="sent">Message 1</li>
-                <li className="received">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book it has?
-                </li>
-                <li className="received">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book it has?
-                </li>
-                <li className="received">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book it has?
-                </li>
-                <li className="received">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book it has?
-                </li>
-                <li className="received">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book it has?
-                </li>
-                <li className="sent">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book it has?
-                </li>
-                <li className="received">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book it has?
-                </li>
-                <li className="received">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book it has?
-                </li>
-                <li className="sent">Message 3</li>
-                <li className="received">Message 4</li>
-              </ul>
-            </div>
-          </div>
-          <input
-            style={{ display: this.state.chatShown }}
-            className="chat-input"
-            placeholder="Type a message..."
-          ></input>
-        </>
-      );
     }
   }
 

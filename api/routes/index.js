@@ -6,7 +6,6 @@
  var bodyParser = require('body-parser')
 
  require('dotenv/config');
-
  admin.initializeApp({
    credential: admin.credential.cert({
      "type": "service_account",

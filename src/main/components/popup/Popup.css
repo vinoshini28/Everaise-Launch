@@ -1,0 +1,39 @@
+.warningbody {
+  width: 600px;
+  height: 400px;
+  position: absolute;
+  background: white;
+  z-index: 1;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+}
+
+.warning {
+  color: var(--text-dark);
+  width: 100px;
+  height: 100px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+
+
+
+
+.button {
+  z-index: 10;
+  background-color: var(--text-dark);
+  color: white;
+  border-radius: 4px;
+  margin-top: 20px;
+  transition: filter 300ms;
+  font-weight: 300;
+  font-family: "Roboto", Roboto, sans-serif;
+}
+
+.button:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
+}

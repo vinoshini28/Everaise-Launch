@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./Main.css";
 import Subject from "./class/Subject";
 import Card from "./components/card/Card.js";
+import Popup from "./components/popup/Popup.js";
+
 import Settings from "./settingsPage/SettingsPage.js";
 import axios from "axios";
 
@@ -42,6 +44,7 @@ export default class Main extends Component {
       switch: props.switch,
       user: "",
       response: "",
+      authorized: true,
     };
     this.setSubject = this.setSubject.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -76,16 +79,21 @@ export default class Main extends Component {
                         default:
                           t.setState({
                             user: authResult["user"]["displayName"],
+                            authorized: true,
                           });
                           t.setSubject("Home", "");
                           break;
                         case 6:
                           t.setState({
                             user: authResult["user"]["displayName"],
+                            authorized: true,
                           });
                           t.setSubject("Home", "");
                           break;
                         case 0:
+                          t.setState({
+                            authorized: false,
+                          });
                           break;
                       }
                     })
@@ -220,19 +228,47 @@ export default class Main extends Component {
           <div id="loader"> Loading... </div>{" "}
         </>
       );
-      return (
-        <>
-          <Card
-            headText={head}
-            bodyText={wrapper}
-            color={getComputedStyle(document.documentElement).getPropertyValue(
-              "--yellowlogo"
-            )}
-            displayBody={true}
-            width={"400px"}
-          />{" "}
-        </>
-      );
+
+      if (this.state.authorized) {
+        return (
+          <>
+            <Card
+              headText={head}
+              bodyText={wrapper}
+              color={getComputedStyle(
+                document.documentElement
+              ).getPropertyValue("--yellowlogo")}
+              displayBody={true}
+              width={"400px"}
+            />{" "}
+          </>
+        );
+      } else {
+        var message = (
+          <>
+            <h2 className="warning-text-header">Something went wrong</h2>
+            <p className="warning-text">
+              Your account has not been activated yet.
+            </p>
+            <p className="warning-text">Please try again later.</p>
+            <p className="warning-text">
+              Email{" "}
+              <a href="mailto:admin@everaise.org" className="mail">
+                admin@everaise.org
+              </a>{" "}
+              if this error persists.
+            </p>
+            <div style={{ display: "none" }} id="firebaseui-auth-container">
+              {" "}
+            </div>{" "}
+            <div style={{ display: "none" }} id="loader">
+              {" "}
+              Loading...{" "}
+            </div>{" "}
+          </>
+        );
+        return <Popup message={message}></Popup>;
+      }
     }
     if (this.state.view === "Logout") {
       window.location.reload(false);

@@ -239,4 +239,26 @@ form {
   transform: scaleX(1);
 }
 
+.mail {
+  text-decoration: underline;
+  color: var(--text-dark);
+}
 
+.warning-text {
+  z-index: 10;
+  color: var(--text-dark);
+  font-weight: 200;
+  font-family: "Roboto", Roboto, sans-serif;
+}
+.warning-text-header {
+  z-index: 10;
+  color: var(--text-dark);
+  font-weight: 300;
+  font-family: "Roboto", Roboto, sans-serif;
+}
+#loader {
+  font-family: "Roboto", Roboto, sans-serif;
+  font-weight: 300;
+  color: var(--text-dark);
+  text-align: center;
+}
