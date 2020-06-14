@@ -21,7 +21,7 @@ import { ReactComponent as Sitemap } from "../img/icons/sitemap-solid.svg";
 
 var config = {
   apiKey: "AIzaSyD9A7ncLDqbdgowx76nPr0VzDDeIhSqg2c",
-  authDomain: "launch-8f860.firebaseapp.com",
+  authDomain: "launch.everaise.org",
   databaseURL: "https://launch-8f860.firebaseio.com",
   projectId: "launch-8f860",
   storageBucket: "launch-8f860.appspot.com",
@@ -64,7 +64,7 @@ export default class Main extends Component {
                 .currentUser.getIdToken(true)
                 .then(function (idToken) {
                   axios
-                    .post("http://localhost:9000/roles", {
+                    .post("https://everaise-launch.uc.r.appspot.com/roles", {
                       uid: authResult.user.uid,
                     })
                     .then(function (response) {
