@@ -121,8 +121,10 @@ export default class Main extends Component {
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
       ],
-      tosUrl: "<tos-url>",
-      privacyPolicyUrl: "<privacy-policy-url>",
+      tosUrl:
+        "https://github.com/Everaise-Academy/Everaise-Launch/blob/master/TERMS_AND_CONDITIONS.md",
+      privacyPolicyUrl:
+        "https://github.com/Everaise-Academy/Everaise-Launch/blob/master/PRIVACY_POLICY.md",
     };
     ui.start("#firebaseui-auth-container", uiConfig);
   }

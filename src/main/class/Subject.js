@@ -1,9 +1,10 @@
 import React, { Component, useState } from "react";
 import Overview from "./overview/Overview";
-import Handouts from "./handouts/Handouts";
+import Classroom from "./classroom/Classroom";
 import Forum from "./forum/Forum";
-import Grading from "../grader/Grading.js";
 import Chat from "../chat/Chat.js";
+import Announcements from "../announcements/Announcements.js";
+import Settings from "../settings/Settings.js";
 
 import "./Subject.css";
 
@@ -14,6 +15,7 @@ import { ReactComponent as Caret } from "../../img/icons/caret.svg";
 
 import { ReactComponent as Binoculars } from "../../img/icons/binoculars.svg";
 import { ReactComponent as Comment } from "../../img/icons/comments.svg";
+import { ReactComponent as Bell } from "../../img/icons/bell-solid.svg";
 
 import { ReactComponent as Book } from "../../img/icons/book.svg";
 import { ReactComponent as School } from "../../img/icons/school.svg";
@@ -30,6 +32,9 @@ function NavItem(props) {
           if (props.logout === true) {
             setOpen(!open);
             props.toggle("Login", "");
+          }
+          if (props.logout === "sub") {
+            props.switchSub(props.viewState);
           } else {
             setOpen(!open);
           }
@@ -55,7 +60,6 @@ function DropdownMenu(propsm) {
     return (
       <a className="menu-item" onClick={propsm.toggle(props.classSub)}>
         <span className="icon-button">{props.icon}</span>
-
         {props.children}
       </a>
     );
@@ -68,6 +72,9 @@ function DropdownMenu(propsm) {
 
       <DropdownItem icon={<Comment />} classSub={"Forum"}>
         <p>&nbsp; Forum</p>
+      </DropdownItem>
+      <DropdownItem icon={<School />} classSub={"Classroom"}>
+        <p>&nbsp; Classroom</p>
       </DropdownItem>
     </div>
   );
@@ -83,10 +90,11 @@ export default class Subject extends Component {
       user: "Jet Chung",
       mod: this.props.role,
     };
-    this.types = ["Overview", "Handouts", "Forum", "Classroom", "Grading"];
+    this.types = ["Overview", "Forum", "Classroom"];
     this.setType = this.setType.bind(this);
     this.DropdownMenu = DropdownMenu.bind(this);
     this.renderSubCategory = this.renderSubCategory.bind(this);
+    this.switchSub = this.switchSub.bind(this);
   }
 
   setType(type) {
@@ -114,15 +122,14 @@ export default class Subject extends Component {
       );
     });
   }
+  switchSub(subpage) {
+    this.setState({
+      type: subpage,
+    });
+  }
 
   renderSubCategory() {
     switch (this.state.type) {
-      case "Home":
-        // this.state.switch("Home", this.state.subject);
-        break;
-      case "Settings":
-        this.state.switch("Settings", "");
-        break;
       case "Overview":
         return (
           <Overview
@@ -131,16 +138,9 @@ export default class Subject extends Component {
             role={this.props.role}
           />
         );
-      case "Handouts":
-        return (
-          <Handouts
-            subject={this.props.subject}
-            day={1}
-            user={this.props.user}
-            role={this.props.role}
-          />
-        );
+
       case "Forum":
+        alert("forum");
         return (
           <Forum
             subject={this.props.subject}
@@ -148,8 +148,16 @@ export default class Subject extends Component {
             role={this.props.role}
           />
         );
-      case "Grading":
-        return <Grading />;
+      case "Classroom":
+        return <Classroom subject={this.props.subject} isAdmin={false} />;
+      case "Home":
+        // this.state.switch("Home", this.state.subject);
+        break;
+      case "Announcements":
+        return <Announcements />;
+      case "Settings":
+        return <Settings />;
+
       default:
         return;
     }
@@ -174,6 +182,20 @@ export default class Subject extends Component {
             )}
             icon={<Home />}
           ></NavItem>
+          <NavItem
+            icon={<Bell />}
+            logout={"sub"}
+            switchSub={this.switchSub.bind(this)}
+            viewState={"Announcements"}
+          ></NavItem>
+
+          <NavItem
+            icon={<Cog />}
+            logout={"sub"}
+            switchSub={this.switchSub.bind(this)}
+            viewState={"Settings"}
+          ></NavItem>
+
           <NavItem
             logout={true}
             toggle={this.props.switch.bind(this, "Logout", "")}

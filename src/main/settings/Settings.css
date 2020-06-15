@@ -1,0 +1,113 @@
+.settingsbody {
+  width: 600px;
+  height: 400px;
+  background: white;
+  z-index: 1;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+}
+
+.cog {
+  color: var(--text-dark);
+  width: 100px;
+  height: 100px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.button {
+  z-index: 10;
+  background-color: var(--text-dark);
+  color: white;
+  border-radius: 4px;
+  margin-top: 20px;
+  transition: filter 300ms;
+  font-weight: 300;
+  font-family: "Roboto", Roboto, sans-serif;
+}
+
+.button:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
+}
+
+.settings-text {
+  margin: 25px;
+  z-index: 10;
+  color: var(--text-dark);
+  font-weight: 200;
+  font-family: "Roboto", Roboto, sans-serif;
+}
+.settings-text-header {
+  z-index: 10;
+  color: var(--text-dark);
+  font-weight: 300;
+  font-family: "Roboto", Roboto, sans-serif;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.switch {
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row-full {
+  width: 100%;
+}

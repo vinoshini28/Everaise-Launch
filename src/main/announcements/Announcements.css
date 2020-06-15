@@ -1,0 +1,28 @@
+.header {
+  padding-left: 20px;
+  color: var(--brownlogo);
+}
+h1 {
+  padding-top: 30px;
+}
+.evlogo {
+  height: 150px;
+  float: right;
+  padding-top: 20px;
+  padding-right: 50px;
+}
+
+.CardHeadText {
+  padding: 10px;
+}
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.inner {
+  height: 35px;
+}
