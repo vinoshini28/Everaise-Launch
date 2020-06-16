@@ -140,7 +140,6 @@ export default class Subject extends Component {
         );
 
       case "Forum":
-        alert("forum");
         return (
           <Forum
             subject={this.props.subject}

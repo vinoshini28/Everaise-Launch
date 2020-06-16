@@ -4,7 +4,6 @@ import Subject from "./class/Subject";
 import Card from "./components/card/Card.js";
 import Popup from "./components/popup/Popup.js";
 
-import Settings from "./settingsPage/SettingsPage.js";
 import axios from "axios";
 
 import * as firebase from "firebase";
@@ -50,7 +49,37 @@ export default class Main extends Component {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.displayButton = this.displayButton.bind(this);
   }
+
   componentDidMount() {
+    if (localStorage.getItem("colorScheme") === null) {
+      localStorage.setItem("colorScheme", "dark");
+    } else {
+      let root = document.documentElement;
+
+      let colorScheme = localStorage.getItem("colorScheme");
+      if (colorScheme === "dark") {
+        root.style.setProperty("--bg", "#242526");
+        root.style.setProperty("--bg-accent", "#484a4d");
+        root.style.setProperty("--text-color", "white");
+        root.style.setProperty("--text-dark", "#484a4d");
+
+        root.style.setProperty("--nav-color", "#484a4d");
+        root.style.setProperty("--nav-inner", "white");
+        root.style.setProperty("--bg-chat-color", "#484a4d");
+        root.style.setProperty("--input-chat-color", "white");
+      }
+      if (colorScheme === "light") {
+        root.style.setProperty("--bg", "#e8e6e6");
+        root.style.setProperty("--bg-accent", "#ebebeb");
+        root.style.setProperty("--text-color", "#434343");
+        root.style.setProperty("--text-dark", "#434343");
+
+        root.style.setProperty("--nav-color", "#d1cdcd");
+        root.style.setProperty("--nav-inner", "black");
+        root.style.setProperty("--bg-chat-color", "white");
+        root.style.setProperty("--input-chat-color", "#edebeb");
+      }
+    }
     var t = this;
     var uiConfig = {
       callbacks: {
@@ -63,8 +92,9 @@ export default class Main extends Component {
                 .auth()
                 .currentUser.getIdToken(true)
                 .then(function (idToken) {
+                  //https://everaise-launch.uc.r.appspot.com/roles"
                   axios
-                    .post("https://everaise-launch.uc.r.appspot.com/roles", {
+                    .post("http://localhost:9000/roles", {
                       uid: authResult.user.uid,
                     })
                     .then(function (response) {
@@ -345,13 +375,6 @@ export default class Main extends Component {
             role={this.state.role}
           />{" "}
         </div>
-      );
-    }
-    if (this.state.view === "Settings") {
-      return (
-        <>
-          <Settings> </Settings>{" "}
-        </>
       );
     } else {
       return;

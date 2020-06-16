@@ -13,9 +13,10 @@ export default class Announcements extends Component {
         <div className="column">
           <h1 className="header">Everaise Academy</h1>
           <h2 className="header">Announcements</h2>
+          
         </div>
         <div className="column">
-          <p className="Forum-icon">
+        <p className="Forum-icon">
             <img className="evlogo" alt="circlogo" src="evcirc.png"></img>
           </p>
         </div>
@@ -27,11 +28,7 @@ export default class Announcements extends Component {
       <div className="OverviewContent">
         <div
           className="CardHeadinner inner"
-          style={{
-            background: getComputedStyle(
-              document.documentElement
-            ).getPropertyValue("--single-button"),
-          }}
+          style={{backgroundColor:"#434343"}}
         >
           <div className="CardHeadText left">Estimathon</div>
           <div className="CardHeadText right">Posted June 15</div>
@@ -56,9 +53,7 @@ export default class Announcements extends Component {
         <Card
           headText={this.getHead()}
           bodyText={this.getBody()}
-          color={getComputedStyle(document.documentElement).getPropertyValue(
-            "--yellowlogo"
-          )}
+          color={"#434343"}
           displayBody={true}
           link={true}
           linkColor={true}

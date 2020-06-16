@@ -33,6 +33,7 @@
   border-spacing: 5px;
   cursor: not-allowed;
   width: 400px;
+  border: none;
 }
 
 .OpenForum:hover {

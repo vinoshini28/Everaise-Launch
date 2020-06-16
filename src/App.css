@@ -1,9 +1,28 @@
 /* Global variables */
 :root {
-  --bg: #242526;
+  /* dark */
+/* 
+  --bg: #121212;
   --bg-accent: #484a4d;
   --text-color: white;
   --text-dark: #484a4d;
+
+  --nav-color: #484a4d;
+  --nav-inner: white;
+  --bg-chat-color: #484a4d;
+  --input-chat-color: white;
+ */
+
+  /* light */
+  /* --bg: #e8e6e6;
+  --bg-accent: #ebebeb;
+  --text-color: #434343;
+  --text-dark: #434343;
+
+  --nav-color: #d1cdcd;
+  --nav-inner: black;
+  --bg-chat-color: white;
+  --input-chat-color: #edebeb; */
 
   --nav-size: 60px;
   --border: 1px solid #474a4d;
@@ -11,7 +30,7 @@
   --speed: 500ms;
 
   --mathi-primary: #4ba1b3;
-  --mathi-secondary: #1C4F5D;
+  --mathi-secondary: #1c4f5d;
 
   --mathii-primary: #cd2f2a;
   --mathii-secondary: #852018;
@@ -37,12 +56,15 @@
   --success-hover: darkgreen;
   --failure-hover: darkred;
 
-  --cardbg1: rgb(240, 236, 236);
+  /* --cardbg1: rgb(240, 236, 236); */
   --cardbg2: white;
+  --cardbg1: #f2f2f2;
 
   --brownlogo: #775031;
   --yellowlogo: #ecd549;
 }
+
+
 
 .App {
   text-align: center;
@@ -128,7 +150,7 @@ a {
   --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
-  background-color: #484a4d;
+  background-color: var(--nav-color);
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
@@ -162,7 +184,7 @@ a {
   padding: 0.5rem;
 }
 .menu-item:hover {
-  background-color: #525357;
+  background-color: var(--bg-accent);
 }
 .icon-right {
   margin-left: auto;

@@ -55,7 +55,7 @@ p.Nav-Button-label {
 }
 
 .icon-button svg {
-  fill: var(--text-color);
+  fill: var(--nav-inner);
   width: 20px;
   height: 20px;
 }

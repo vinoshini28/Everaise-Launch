@@ -4,7 +4,7 @@
   position: fixed;
   width: 40px;
   height: 40px;
-  background-color: #484a4d;
+  background-color: var(--nav-color);
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
@@ -51,15 +51,15 @@ svg {
   width: 300px;
 
   transform: translateX(-45%);
-  background-color: var(--bg);
-  border: var(--border);
+  background-color: var(--bg-chat-color);
+  border: none;
   border-radius: var(--border-radius);
   padding: 1rem;
 }
 
 .sent {
   border-radius: 20px;
-  background-color: #3c78d8;
+  background-color: #0084FF;
   float: right;
   width: 80%;
   align-content: center;
@@ -112,6 +112,8 @@ svg {
   list-style: none;
   overflow-y: scroll;
   height: 450px;
+  scrollbar-color:  var(--bg-accent) var(--bg);
+  scrollbar-width: none;
 }
 .chat-container {
   margin: 0;
@@ -125,6 +127,7 @@ svg {
   bottom: 115px;
   width: 300px;
   height: 30px;
+  background:var(--input-chat-color);
   margin-bottom: 10px;
   margin-top: 10px;
   font-size: 1rem;
@@ -164,4 +167,6 @@ svg {
   transform: translateX(110%);
   transition: all var(--speed) ease;
 }
+
+
 
