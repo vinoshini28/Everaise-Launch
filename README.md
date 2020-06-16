@@ -10,6 +10,8 @@ Launch was built from the ground up to have all the features we wanted, and noth
 
 ![enter image description here](https://scontent.xx.fbcdn.net/v/t1.15752-9/82554260_264810091446237_1915273663120328817_n.png?_nc_cat=106&_nc_sid=b96e70&_nc_ohc=brJMfAdbcFUAX8DJEFO&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=d5561a28e0bb68ea4203105628944a77&oe=5F0BBFE6)
 
+![Chat](https://scontent.xx.fbcdn.net/v/t1.15752-9/104104951_550518808973034_4799080281031604343_n.png?_nc_cat=111&_nc_sid=b96e70&_nc_ohc=HD76mItDMRgAX-Si4c2&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=c598f3b9da8ae90f10c2c9cba47a1d39&oe=5F0DA94C)
+
 
 ## About Everaise Launch
 
