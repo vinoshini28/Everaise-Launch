@@ -23,7 +23,7 @@ export default class Classroom extends Component {
       link: "",
       messages: "",
       subject: "MathII",
-      showAdmin: false,
+      showAdmin: true,
     };
     this.toggleAdminView = this.toggleAdminView.bind(this);
     this.getAdminView = this.getAdminView.bind(this);
