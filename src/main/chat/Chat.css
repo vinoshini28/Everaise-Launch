@@ -170,3 +170,8 @@ svg {
 
 
 
+
+
+.user{
+  color:var(--nav-inner)
+}

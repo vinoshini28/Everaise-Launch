@@ -101,38 +101,13 @@
   column-gap: 400px;
 }
 
-.Post {
-  padding: 14px 20px;
-  margin-top: 16px;
-  background-color: #5a6268;
-  position: relative;
 
-  border: none;
-  border-radius: 0px;
-  cursor: pointer;
-  column-width: 90%;
-  float: right;
-}
-
-.Close {
-  padding: 14px 20px;
-  margin-top: 16px;
-  border: none;
-
-  background-color: red;
-  position: relative;
-
-  border-radius: 0px;
-  cursor: pointer;
-}
 
 .Close:hover {
   background-color: #b30000;
 }
 
-.Post:hover {
-  background-color: #2f3337;
-}
+
 
 .subjectContainer {
   top: 50px;

@@ -116,7 +116,7 @@ export default class Overview extends Component {
   render() {
     return (
       <>
-        <Card
+      <Card
           headText={this.getHead()}
           bodyText={this.getBody()}
           color={getComputedStyle(document.documentElement).getPropertyValue(

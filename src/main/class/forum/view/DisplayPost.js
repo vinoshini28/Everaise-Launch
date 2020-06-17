@@ -36,14 +36,14 @@ export default class DisplayPost extends Component {
       "0" + dateLocal.getMinutes()
     ).slice(-2)} `;
   }
-  componentDidUpdate(){
+  componentDidUpdate() {
     MathJax.typeset();
   }
   render() {
     var s = "Posted by " + this.props.user + " on " + this.getDate();
     var h = (
       <>
-          <div className="column">{this.props.head}</div>
+        <div className="column">{this.props.head}</div>
       </>
     );
     var b = (
@@ -55,18 +55,28 @@ export default class DisplayPost extends Component {
     );
     return (
       <div>
-        <Card
-          headText={h}
-          bodyText={b}
-          color={getComputedStyle(document.documentElement).getPropertyValue(
-            "--" + this.props.subject.toLowerCase() + "-primary"
-          )}
-          bgcolor={getComputedStyle(document.documentElement).getPropertyValue(
-            "--cardbg2"
-          )}
-          displayBody={true}
-          width={"53vw"}
-        />
+        <div
+          className="CardHead metapost"
+          style={{
+            background: getComputedStyle(
+              document.documentElement
+            ).getPropertyValue(
+              "--" + this.props.subject.toLowerCase() + "-primary"
+            ),
+          }}
+        >
+          <div className="CardHeadText metapost">{h}</div>
+        </div>
+        <div
+          className="CardBody metapost"
+          style={{
+            background: getComputedStyle(
+              document.documentElement
+            ).getPropertyValue("--cardbg2"),
+          }}
+        >
+          <div className="CardBodyText">{b}</div>
+        </div>
       </div>
     );
   }

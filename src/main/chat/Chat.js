@@ -14,7 +14,7 @@ export default class Chat extends Component {
       viewShown: false,
       view: "users",
       user: "",
-      role: "student",
+      role: "admin",
       uid: "",
       chats: {},
       message: "",

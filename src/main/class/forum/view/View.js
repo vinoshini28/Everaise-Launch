@@ -265,26 +265,35 @@ export default class View extends Component {
 
         bl.push(
           <li>
-            <Card
-              headText={headWrap}
-              bodyText={
+            <div>
+              <div
+                className="CardHead metapost"
+                style={{
+                  background: getComputedStyle(
+                    document.documentElement
+                  ).getPropertyValue(
+                    "--" + this.props.subject.toLowerCase() + "-primary"
+                  ),
+                }}
+              >
+                <div className="CardHeadText metapost">{headWrap}</div>
+              </div>
+              <div
+                className="CardBody metapost"
+                style={{
+                  background: getComputedStyle(
+                    document.documentElement
+                  ).getPropertyValue("--cardbg2"),
+                }}
+              >
                 <div
+                  className="CardBodyText"
                   dangerouslySetInnerHTML={{
                     __html: this.state.data[this.state.zoom]["post"],
                   }}
-                />
-              }
-              color={getComputedStyle(
-                document.documentElement
-              ).getPropertyValue(
-                "--" + this.props.subject.toLowerCase() + "-primary"
-              )}
-              bgcolor={getComputedStyle(
-                document.documentElement
-              ).getPropertyValue("--cardbg2")}
-              displayBody={true}
-              width={"53vw"}
-            />
+                ></div>
+              </div>
+            </div>
           </li>
         );
         try {
@@ -322,32 +331,41 @@ export default class View extends Component {
               }
               bl.push(
                 <li>
-                  <Card
-                    headText={h}
-                    bodyText={
+                  <div>
+                    <div
+                      className="CardHead metapost"
+                      style={{
+                        background: getComputedStyle(
+                          document.documentElement
+                        ).getPropertyValue(
+                          "--" + this.props.subject.toLowerCase() + "-primary"
+                        ),
+                      }}
+                    >
+                      <div className="CardHeadText metapost">{h}</div>
+                    </div>
+                    <div
+                      className="CardBody metapost"
+                      style={{
+                        background: getComputedStyle(
+                          document.documentElement
+                        ).getPropertyValue("--cardbg2"),
+                      }}
+                    >
                       <div
+                        className="CardBodyText innertext"
                         dangerouslySetInnerHTML={{
                           __html: replies[replyKeys[i]],
                         }}
-                      />
-                    }
-                    color={getComputedStyle(
-                      document.documentElement
-                    ).getPropertyValue(
-                      "--" + this.props.subject.toLowerCase() + "-primary"
-                    )}
-                    bgcolor={getComputedStyle(
-                      document.documentElement
-                    ).getPropertyValue("--cardbg2")}
-                    displayBody={true}
-                    width={"53vw"}
-                  />
+                      ></div>
+                    </div>
+                  </div>
                 </li>
               );
             }
           }
           bl.push(
-            <li style={{ paddingLeft: "20px", width: "calc(56vw + 10px)" }}>
+            <li>
               <Formik
                 initialValues={{
                   username: this.props.user,
@@ -398,7 +416,7 @@ export default class View extends Component {
                   isSubmitting,
                 }) => (
                   <form onSubmit={handleSubmit}>
-                    <div className="row" style={{ width: "100%" }}>
+                    <div className="row editor">
                       <Editor
                         className="math-editor"
                         id="post"
@@ -406,7 +424,6 @@ export default class View extends Component {
                         init={{
                           height: 200,
                           menubar: false,
-                          width: "120vw",
                           external_plugins: {
                             mathSymbols:
                               "/your-path-to-plugin/mathsymbols-tinymce-plugin/plugin.min.js",
@@ -432,7 +449,7 @@ export default class View extends Component {
                       />
                     </div>
                     <div
-                      className="row"
+                      className="row editor"
                       style={{
                         border: "1px solid lightgray",
                         background: "white",
@@ -456,7 +473,7 @@ export default class View extends Component {
                       className="Cancel"
                       onClick={this.zoomPost.bind(this, k)}
                     >
-                      <p className="Post-buttons">Cancel</p>
+                      <p className="Post-buttons cancel">Cancel</p>
                     </button>
                     {/* {props.errors.name && <div id="feedback">{props.errors.name}</div>} */}
                   </form>

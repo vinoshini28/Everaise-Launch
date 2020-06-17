@@ -120,22 +120,6 @@
   column-gap: 40px;
 }
 
-.Post {
-  padding: 14px 20px;
-  margin-top: 16px;
-  background-color: var(--single-button);
-  position: relative;
-  border: none;
-  border-radius: 0px;
-  cursor: pointer;
-  column-width: 90%;
-  float: right;
-  transition: background-color 300ms;
-}
-.Post:hover {
-  background-color: var(--single-button-hover);
-}
-
 .Close {
   padding: 14px 20px;
   margin-top: 16px;
@@ -152,9 +136,7 @@
   background-color: #b30000;
 }
 
-.Post:hover {
-  background-color: #2f3337;
-}
+
 
 .list-thing {
   float: left;
@@ -164,4 +146,18 @@
 }
 .tox-notification {
   display: none !important;
+}
+
+.metapost {
+  width: auto;
+}
+
+.tox.tox-tinymce {
+
+  width: 100%;
+}
+
+.editor {
+  margin-left:  20px;
+  margin-right: 20px;
 }

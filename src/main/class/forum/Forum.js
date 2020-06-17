@@ -3,7 +3,6 @@ import Create from "./create/Create";
 import View from "./view/View";
 import "./Forum.css";
 
-const MathJax = window.MathJax;
 
 
 export default class Forum extends Component {
@@ -16,9 +15,7 @@ export default class Forum extends Component {
     };
     this.types = ["Create", "View"];
   }
-  componentDidUpdate(){
-    MathJax.typeset();
-  }
+ 
   setType(type) {
     let typeSetter = () => {
       this.setState({

@@ -73,9 +73,6 @@ function DropdownMenu(propsm) {
       <DropdownItem icon={<Comment />} classSub={"Forum"}>
         <p>&nbsp; Forum</p>
       </DropdownItem>
-      <DropdownItem icon={<School />} classSub={"Classroom"}>
-        <p>&nbsp; Classroom</p>
-      </DropdownItem>
     </div>
   );
 }

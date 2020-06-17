@@ -207,7 +207,6 @@ export default class Create extends Component {
           "--" + this.props.subject.toLowerCase() + "-primary"
         )}
         displayBody={true}
-        width="500px"
       />
     );
   }

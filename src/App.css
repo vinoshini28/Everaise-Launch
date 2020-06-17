@@ -51,7 +51,7 @@
   --single-button-hover: #464b4f;
 
   --success: green;
-  --failure: red;
+  --failure: #cd2f2a;
 
   --success-hover: darkgreen;
   --failure-hover: darkred;
@@ -188,4 +188,8 @@ a {
 }
 .icon-right {
   margin-left: auto;
+}
+
+button{
+  border-radius:4px;
 }
