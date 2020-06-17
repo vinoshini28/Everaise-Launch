@@ -20,24 +20,28 @@ export default class Overview extends Component {
   }
 
   getHead() {
+    var icon;
     switch (this.state.subject) {
       case "MathI":
-        var icon = <Chart />;
+        icon = <Chart />;
         break;
       case "MathII":
-        var icon = <Dice />;
+        icon = <Dice />;
         break;
       case "PhysicsMechanics":
-        var icon = <Rocket />;
+        icon = <Rocket />;
         break;
       case "Astronomy":
-        var icon = <Meteor />;
+        icon = <Meteor />;
         break;
       case "Linguistics":
-        var icon = <Sitemap />;
+        icon = <Sitemap />;
         break;
       case "Biology":
-        var icon = <Microscope />;
+        icon = <Microscope />;
+        break;
+      default:
+        icon = null;
         break;
     }
     return (

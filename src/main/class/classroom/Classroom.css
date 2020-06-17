@@ -1,0 +1,140 @@
+@media only screen and (max-width: 600px) {
+  .classroom {
+    width: 60vw;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .classroom {
+    width: 80vw;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .classroom {
+    width: 85vw;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .classroom {
+    width: 92vw;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .classroom {
+    width: 1100px;
+  }
+}
+
+.classroom.CardBody {
+  height: 60vh;
+}
+
+.classroom-messages {
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  height: 60vh;
+}
+.classroom-messages-admin {
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  height: 500px;
+}
+
+.name {
+  font-weight: 900;
+}
+
+li.message {
+  background: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid gainsboro;
+  text-align: left;
+  color: black;
+}
+
+li.message-admin {
+}
+.message-display {
+  background: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid gainsboro;
+  text-align: left;
+  color: black;
+}
+p.admin-message {
+  width: 90%;
+}
+.gavel-button {
+  bottom: 20px;
+  left: 20px;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background-color: var(--nav-color);
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+}
+.gavel-button:hover {
+  filter: brightness(1.2);
+}
+
+.adminpanel {
+  position: fixed;
+  z-index: 1;
+  bottom: 110px;
+  left: 450px;
+  height: 500px;
+  width: 900px;
+
+  transform: translateX(-45%);
+  background-color: var(--bg-chat-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+}
+
+.remove {
+  width: 10px;
+  border: none;
+}
+
+.button-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.remove {
+  width: 20px;
+  border: none;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: var(--bg-accent);
+  height: 20px;
+  opacity: 0.3;
+  float: right;
+  margin: 0px;
+  transition: filter 200ms;
+  border: 1px solid black;
+}
+
+.remove:hover {
+  filter: brightness(0.2);
+}
+Times {
+  width: 10px;
+}

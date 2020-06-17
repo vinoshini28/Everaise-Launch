@@ -92,9 +92,8 @@ export default class Main extends Component {
                 .auth()
                 .currentUser.getIdToken(true)
                 .then(function (idToken) {
-                  //https://everaise-launch.uc.r.appspot.com/roles"
                   axios
-                    .post("http://localhost:9000/roles", {
+                    .post("https://everaise-launch.uc.r.appspot.com/roles", {
                       uid: authResult.user.uid,
                     })
                     .then(function (response) {
