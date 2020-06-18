@@ -44,8 +44,7 @@ Thumbs.db
 # environment var #
 ################
 /api/.env
-
+/api/routes/index.js
 # build #
 ################
 /build
-/api

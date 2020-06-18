@@ -17,6 +17,7 @@ import { ReactComponent as Rocket } from "../img/icons/rocket-solid.svg";
 import { ReactComponent as Meteor } from "../img/icons/meteor-solid.svg";
 import { ReactComponent as Microscope } from "../img/icons/microscope-solid.svg";
 import { ReactComponent as Sitemap } from "../img/icons/sitemap-solid.svg";
+const MathJax = window.MathJax;
 
 var config = {
   apiKey: "AIzaSyD9A7ncLDqbdgowx76nPr0VzDDeIhSqg2c",
@@ -50,6 +51,9 @@ export default class Main extends Component {
     this.displayButton = this.displayButton.bind(this);
   }
 
+  componentDidUpdate() {
+    MathJax.typeset();
+  }
   componentDidMount() {
     var t = this;
     t.setState({

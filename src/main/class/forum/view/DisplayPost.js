@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./View.css";
-import Card from "../../../components/card/Card.js";
-const MathJax = window.MathJax;
 
 var weekday = [
   "Sunday",
@@ -36,9 +34,7 @@ export default class DisplayPost extends Component {
       "0" + dateLocal.getMinutes()
     ).slice(-2)} `;
   }
-  componentDidUpdate() {
-    MathJax.typeset();
-  }
+  
   render() {
     var s = "Posted by " + this.props.user + " on " + this.getDate();
     var h = (
