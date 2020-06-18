@@ -69,7 +69,7 @@ export default class Main extends Component {
                 .then(function (idToken) {
                   //""
                   axios
-                    .post("https://everaise-launch.uc.r.appspot.com/roles", {
+                    .post("https://launch-8f860.uc.r.appspot.com/roles", {
                       uid: authResult.user.uid,
                     })
                     .then(function (response) {
