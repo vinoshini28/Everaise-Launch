@@ -1,7 +1,7 @@
 # Everaise Launch
 
 Launch is the learning management system for Everaise Academy, [https://everaise.org/](https://everaise.org/). Launch can be accessed by students at [http://launch.everaise.org/](http://launch.everaise.org/).
-![](https://scontent.xx.fbcdn.net/v/t1.15752-9/104492656_214119173212387_2668032283884793060_n.png?_nc_cat=110&_nc_sid=b96e70&_nc_ohc=Zb-f9kKNb-4AX8-PzHe&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=1fbb7277394fbf350c688b773ae036e4&oe=5F121429) 
+![](https://scontent.xx.fbcdn.net/v/t1.15752-9/104492656_214119173212387_2668032283884793060_n.png?_nc_cat=110&_nc_sid=b96e70&_nc_ohc=Zb-f9kKNb-4AX8-PzHe&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=1fbb7277394fbf350c688b773ae036e4&oe=5F121429 =250x) 
 
 
 ## Features
