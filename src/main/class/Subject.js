@@ -17,10 +17,10 @@ import { ReactComponent as Binoculars } from "../../img/icons/binoculars.svg";
 import { ReactComponent as Comment } from "../../img/icons/comments.svg";
 import { ReactComponent as Bell } from "../../img/icons/bell-solid.svg";
 
-import { ReactComponent as Book } from "../../img/icons/book.svg";
-import { ReactComponent as School } from "../../img/icons/school.svg";
+// import { ReactComponent as Book } from "../../img/icons/book.svg";
+// import { ReactComponent as School } from "../../img/icons/school.svg";
 import { ReactComponent as Home } from "../../img/icons/home-solid.svg";
-import { ReactComponent as Marker } from "../../img/icons/marker-solid.svg";
+// import { ReactComponent as Marker } from "../../img/icons/marker-solid.svg";
 
 function NavItem(props) {
   const [open, setOpen] = useState(false);
@@ -93,6 +93,7 @@ export default class Subject extends Component {
     this.renderSubCategory = this.renderSubCategory.bind(this);
     this.switchSub = this.switchSub.bind(this);
   }
+ 
 
   setType(type) {
     let typeSetter = () => {

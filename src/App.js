@@ -19,8 +19,6 @@ export default class App extends Component {
       root.style.setProperty("--bg-chat-color", "#484a4d");
       root.style.setProperty("--input-chat-color", "white");
     } else {
-      console.log(localStorage.getItem("isDark"));
-      console.log("setting light");
       root.style.setProperty("--bg", "#e8e6e6");
       root.style.setProperty("--bg-accent", "#ebebeb");
       root.style.setProperty("--text-color", "#434343");

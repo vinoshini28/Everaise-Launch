@@ -13,8 +13,6 @@ import * as firebase from "firebase";
 
 const convert = require("../../../components/classes.json");
 
-const MathJax = window.MathJax;
-
 export default class View extends Component {
   constructor(props) {
     super(props);
@@ -47,6 +45,9 @@ export default class View extends Component {
       editorContent: e.target.getContent(),
       preview: e.target.getContent(),
     });
+  }
+  componentDidUpdate() {
+    window.MathJax.typeset();
   }
   deletePost(i) {
     firebase
@@ -424,10 +425,6 @@ export default class View extends Component {
                         init={{
                           height: 200,
                           menubar: false,
-                          external_plugins: {
-                            mathSymbols:
-                              "/your-path-to-plugin/mathsymbols-tinymce-plugin/plugin.min.js",
-                          }, // Add plugin to Tinymce
 
                           branding: false,
                           // selector:"#postinputtext",

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Create.css";
 import Card from "../../../components/card/Card.js";
-const MathJax = window.MathJax;
 
 export default class IndividualPost extends Component {
   constructor(props) {
@@ -15,9 +14,7 @@ export default class IndividualPost extends Component {
       preview: "Preview",
     };
   }
-  componentDidUpdate(){
-    MathJax.typeset();
-  }
+ 
   render() {
     const Wrapper = (
       <>

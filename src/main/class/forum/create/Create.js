@@ -6,8 +6,6 @@ import * as firebase from "firebase";
 import { Formik } from "formik";
 import { Editor } from "@tinymce/tinymce-react";
 
-const MathJax = window.MathJax;
-
 const convert = require("../../../components/classes.json");
 export default class Create extends Component {
   constructor(props) {
@@ -23,15 +21,13 @@ export default class Create extends Component {
 
   renderForm() {}
   handleEditorChange(e) {
-    console.log("Content was updated:", e.target.getContent());
     this.setState({
       editorContent: e.target.getContent(),
       preview: e.target.getContent(),
     });
   }
-
   componentDidUpdate() {
-    MathJax.typeset();
+    window.MathJax.typeset();
   }
 
   render() {
@@ -101,7 +97,6 @@ export default class Create extends Component {
                 posts: this.state.n + 1,
               });
 
-            console.log(values);
             actions.setSubmitting(false);
             document.getElementById("cancel").click();
           } catch (err) {
@@ -140,10 +135,6 @@ export default class Create extends Component {
                   height: 500,
                   menubar: false,
                   width: "120vw",
-                  external_plugins: {
-                    mathSymbols:
-                      "/your-path-to-plugin/mathsymbols-tinymce-plugin/plugin.min.js",
-                  }, // Add plugin to Tinymce
 
                   branding: false,
                   // selector:"#postinputtext",
