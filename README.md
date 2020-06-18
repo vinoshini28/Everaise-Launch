@@ -28,7 +28,7 @@ Launch was built from the ground up to have all the features we wanted, and noth
 
 Launch was built with with the FERN stack (Firebase, Express.js, React, and Node.js) and the Google App Engine. 
 
-![](https://scontent.xx.fbcdn.net/v/t1.15752-9/104289277_2328836940753086_7256520636304122880_n.png?_nc_cat=106&_nc_sid=b96e70&_nc_ohc=LSoZnpPOtxAAX8_Z9o5&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=a2a9f0be6f9c2827593ebfdea868347e&oe=5F0F1D2A)
+![](https://scontent.xx.fbcdn.net/v/t1.15752-9/104430659_2796756940449887_5624928720555026948_n.png?_nc_cat=104&_nc_sid=b96e70&_nc_ohc=9Y_xvkqEH1wAX_g9A5O&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=20f8924594b7c32ed377280a1b826f70&oe=5F0EA5F0)
 
 ## License
 [MIT License](https://github.com/JetChung/Everaise-Launch/blob/master/LICENSE.md)
