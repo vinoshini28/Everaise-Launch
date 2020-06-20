@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./Classroom.css";
 import { ReactComponent as Back } from "../../../img/icons/chevron-left-solid.svg";
-import { Formik } from "formik";
-import * as firebase from "firebase";
 import Card from "../../components/card/Card.js";
 
 import { ReactComponent as Chart } from "../../../img/icons/chart-line-solid.svg";
@@ -14,6 +12,13 @@ import { ReactComponent as Sitemap } from "../../../img/icons/sitemap-solid.svg"
 import { ReactComponent as Gavel } from "../../../img/icons/gavel-solid.svg";
 import { ReactComponent as Times } from "../../../img/icons/times-solid.svg";
 
+import { Formik } from "formik";
+import { Editor } from "@tinymce/tinymce-react";
+
+import * as firebase from "firebase";
+
+import AdminPost from "./AdminPost.js";
+
 const convert = require("../../components/classes.json");
 
 export default class Classroom extends Component {
@@ -24,9 +29,15 @@ export default class Classroom extends Component {
       messages: "",
       subject: "MathII",
       showAdmin: true,
+      name: "Jet Chung",
+      preview: "Preview",
+      editorContent: "",
+      queue: "",
     };
     this.toggleAdminView = this.toggleAdminView.bind(this);
     this.getAdminView = this.getAdminView.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.handleEditorChange = this.handleEditorChange.bind(this);
   }
   getHead() {
     var icon;
@@ -70,7 +81,36 @@ export default class Classroom extends Component {
       showAdmin: !this.state.showAdmin,
     });
   }
+  handleEditorChange(e) {
+    this.setState({
+      editorContent: e.target.getContent(),
+      preview: e.target.getContent(),
+    });
+  }
+  send() {}
+  addToQueue() {}
+  delete() {}
   getAdminView() {
+    if (this.state.queue != undefined) {
+      var queue_messages = [];
+      for (var i in this.state.queue) {
+        queue_messages.push(
+          <li className="message-admin">
+            <AdminPost
+              username={
+                this.state.queue[i].isAdmin
+                  ? this.state.queue[i].name + " (Instructor)"
+                  : this.state.queue[i].name
+              }
+              message={this.state.queue[i].message}
+              send={this.send}
+              addToQueue={this.addToQueue}
+              delete={this.delete}
+            ></AdminPost>
+          </li>
+        );
+      }
+    }
     if (this.state.showAdmin) {
       return (
         <>
@@ -86,211 +126,142 @@ export default class Classroom extends Component {
             <Gavel></Gavel>
           </a>
           <div className="adminpanel">
-            <ul className="classroom-messages-admin">
-              <li className="message-admin">
-                {" "}
-                <div className="column message-display">
-                  {" "}
-                  <button className="remove">
-                    <Times></Times>
-                  </button>
-                  <span className="name">모든 국민은:</span> 신체의 자유를
-                  가진다, 명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가
-                  재판의 전제가 된 경우에는 대법원은 이를 최종적으로 심사할
-                  권한을 가진다. 어떠한 형태로도 이를 창설할 수 없다. 사영기업을
-                  국유 또는 공유로 이전하거나 그 경영을 통제 또는 관리할 수
-                  없다.
-                </div>
-              </li>
-            </ul>
+            <ul className="classroom-messages-admin">{queue_messages}</ul>
           </div>
         </>
       );
     }
   }
 
+  componentDidMount() {
+    firebase
+      .database()
+      .ref()
+      .child(this.props.subject.toLowerCase() + "_classroom")
+      .on("value", (snap) => {
+        this.setState({
+          classroom_messages: snap.val(),
+        });
+      });
+
+    firebase
+      .database()
+      .ref()
+      .child(this.props.subject.toLowerCase() + "_classroom_queue")
+      .on("value", (snap) => {
+        this.setState({
+          queue: snap.val(),
+        });
+      });
+    // console.log(this.state.classroom_messages, this.state.queue);
+  }
   getBody() {
+    if (this.state.messages != undefined) {
+      var classroom_messages = [];
+      for (var i = 0; i < this.state.messages.length; i++) {
+        classroom_messages.push(
+          <li className="message" id={"classroom_message_" + i}>
+            {" "}
+            <span className="name">
+              {this.state.messages[i].isAdmin
+                ? this.state.messages[i].name + " (Instructor)"
+                : this.state.messages}
+            </span>{" "}
+            {this.state.messages[i].message}
+          </li>
+        );
+      }
+    }
     return (
       <div className="classroom-content">
-        <ul className="classroom-messages">
-          <li className="message">
-            {" "}
-            <span className="name">모든 국민은:</span> 신체의 자유를 가진다,
-            명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가
-            된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다. 어떠한
-            형태로도 이를 창설할 수 없다. 사영기업을 국유 또는 공유로 이전하거나
-            그 경영을 통제 또는 관리할 수 없다.
-          </li>
-          <li className="message">
-            <span className="name">국무총리:</span> 또는 국무위원이 출석요구를
-            받은 때에는 국무위원 또는 정부위원으로 하여금 출석·답변하게 할 수
-            있다. 대한민국의 경제질서는 개인과 기업의 경제상의 자유와 창의를
-            존중함을 기본으로 한다. 대한민국의 경제질서는 개인과 기업의 경제상의
-            자유와 창의를 존중함을 기본으로 한다. 대통령은 국회에 출석하여
-            발언하거나 서한으로 의견을 표시할 수 있다.
-          </li>
-          <li className="message">
-            {" "}
-            <span className="name">사면감 형및:</span> 복권에 관한 사항은 법률로
-            정한다. 국회는 헌법 또는 법률에 특별한 규정이 없는 한 재적의원
-            과반수의 출석과 출석의원 과반수의 찬성으로 의결한다,
-            국가원로자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
-            그러나.
-          </li>
-          <li className="message">
-            <span className="name">사면 감형:</span> 및사면·감형 및 복권에 관한
-            사항은 법률로 정한다. 국회는 헌법 또는 법률에 특별한 규정이 없는 한
-            재적의원 과반수의 출석과 출석의원 과반수의 찬성으로 의결한다,
-            국가원로자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
-            그러나.
-          </li>
-          <li className="message">
-            <span className="name">감사위 원은:</span> 원장의 제청으로 대통령이
-            임명하고. 농업생산성의 제고와 농지의 합리적인 이용을 위하거나
-            불가피한 사정으로 발생하는 농지의 임대차와 위탁경영은 법률이 정하는
-            바에 의하여 인정된다. 평화통일정책의 수립에 관한 대통령의 자문에
-            응하기 위하여 민주평화통일자문회의를 둘 수 있다, 정부나 법원의
-            권한에 관하여 특별한 조치를 할 수 있다.
-          </li>
-          <li className="message">
-            <span className="name">주권의 제약에</span> 관한 조약. 대한민국은
-            민주공화국이다. 헌법개정안이 제2항의 찬성을 얻은 때에는 헌법개정은
-            확정되며. 다만.
-          </li>
-          <li className="message">
-            <span className="name">모든 국민은:</span> 신체의 자유를 가진다,
-            명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가
-            된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다. 어떠한
-            형태로도 이를 창설할 수 없다. 사영기업을 국유 또는 공유로 이전하거나
-            그 경영을 통제 또는 관리할 수 없다.
-          </li>
-          <li className="message">
-            <span className="name">국무총리:</span> 또는 국무위원이 출석요구를
-            받은 때에는 국무위원 또는 정부위원으로 하여금 출석·답변하게 할 수
-            있다. 대한민국의 경제질서는 개인과 기업의 경제상의 자유와 창의를
-            존중함을 기본으로 한다. 대한민국의 경제질서는 개인과 기업의 경제상의
-            자유와 창의를 존중함을 기본으로 한다. 대통령은 국회에 출석하여
-            발언하거나 서한으로 의견을 표시할 수 있다.
-          </li>
-          <li className="message">
-            {" "}
-            <span className="name">모든 국민은:</span> 신체의 자유를 가진다,
-            명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가
-            된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다. 어떠한
-            형태로도 이를 창설할 수 없다. 사영기업을 국유 또는 공유로 이전하거나
-            그 경영을 통제 또는 관리할 수 없다.
-          </li>
-          <li className="message">
-            <span className="name">국무총리:</span> 또는 국무위원이 출석요구를
-            받은 때에는 국무위원 또는 정부위원으로 하여금 출석·답변하게 할 수
-            있다. 대한민국의 경제질서는 개인과 기업의 경제상의 자유와 창의를
-            존중함을 기본으로 한다. 대한민국의 경제질서는 개인과 기업의 경제상의
-            자유와 창의를 존중함을 기본으로 한다. 대통령은 국회에 출석하여
-            발언하거나 서한으로 의견을 표시할 수 있다.
-          </li>
-          <li className="message">
-            {" "}
-            <span className="name">사면감 형및:</span> 복권에 관한 사항은 법률로
-            정한다. 국회는 헌법 또는 법률에 특별한 규정이 없는 한 재적의원
-            과반수의 출석과 출석의원 과반수의 찬성으로 의결한다,
-            국가원로자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
-            그러나.
-          </li>
-          <li className="message">
-            <span className="name">사면 감형:</span> 및사면·감형 및 복권에 관한
-            사항은 법률로 정한다. 국회는 헌법 또는 법률에 특별한 규정이 없는 한
-            재적의원 과반수의 출석과 출석의원 과반수의 찬성으로 의결한다,
-            국가원로자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
-            그러나.
-          </li>
-          <li className="message">
-            <span className="name">감사위 원은:</span> 원장의 제청으로 대통령이
-            임명하고. 농업생산성의 제고와 농지의 합리적인 이용을 위하거나
-            불가피한 사정으로 발생하는 농지의 임대차와 위탁경영은 법률이 정하는
-            바에 의하여 인정된다. 평화통일정책의 수립에 관한 대통령의 자문에
-            응하기 위하여 민주평화통일자문회의를 둘 수 있다, 정부나 법원의
-            권한에 관하여 특별한 조치를 할 수 있다.
-          </li>
-          <li className="message">
-            <span className="name">주권의 제약에</span> 관한 조약. 대한민국은
-            민주공화국이다. 헌법개정안이 제2항의 찬성을 얻은 때에는 헌법개정은
-            확정되며. 다만.
-          </li>
-          <li className="message">
-            <span className="name">모든 국민은:</span> 신체의 자유를 가진다,
-            명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가
-            된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다. 어떠한
-            형태로도 이를 창설할 수 없다. 사영기업을 국유 또는 공유로 이전하거나
-            그 경영을 통제 또는 관리할 수 없다.
-          </li>
-          <li className="message">
-            <span className="name">국무총리:</span> 또는 국무위원이 출석요구를
-            받은 때에는 국무위원 또는 정부위원으로 하여금 출석·답변하게 할 수
-            있다. 대한민국의 경제질서는 개인과 기업의 경제상의 자유와 창의를
-            존중함을 기본으로 한다. 대한민국의 경제질서는 개인과 기업의 경제상의
-            자유와 창의를 존중함을 기본으로 한다. 대통령은 국회에 출석하여
-            발언하거나 서한으로 의견을 표시할 수 있다.
-          </li>
-          <li className="message">
-            {" "}
-            <span className="name">모든 국민은:</span> 신체의 자유를 가진다,
-            명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가
-            된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다. 어떠한
-            형태로도 이를 창설할 수 없다. 사영기업을 국유 또는 공유로 이전하거나
-            그 경영을 통제 또는 관리할 수 없다.
-          </li>
-          <li className="message">
-            <span className="name">국무총리:</span> 또는 국무위원이 출석요구를
-            받은 때에는 국무위원 또는 정부위원으로 하여금 출석·답변하게 할 수
-            있다. 대한민국의 경제질서는 개인과 기업의 경제상의 자유와 창의를
-            존중함을 기본으로 한다. 대한민국의 경제질서는 개인과 기업의 경제상의
-            자유와 창의를 존중함을 기본으로 한다. 대통령은 국회에 출석하여
-            발언하거나 서한으로 의견을 표시할 수 있다.
-          </li>
-          <li className="message">
-            {" "}
-            <span className="name">사면감 형및:</span> 복권에 관한 사항은 법률로
-            정한다. 국회는 헌법 또는 법률에 특별한 규정이 없는 한 재적의원
-            과반수의 출석과 출석의원 과반수의 찬성으로 의결한다,
-            국가원로자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
-            그러나.
-          </li>
-          <li className="message">
-            <span className="name">사면 감형:</span> 및사면·감형 및 복권에 관한
-            사항은 법률로 정한다. 국회는 헌법 또는 법률에 특별한 규정이 없는 한
-            재적의원 과반수의 출석과 출석의원 과반수의 찬성으로 의결한다,
-            국가원로자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
-            그러나.
-          </li>
-          <li className="message">
-            <span className="name">감사위 원은:</span> 원장의 제청으로 대통령이
-            임명하고. 농업생산성의 제고와 농지의 합리적인 이용을 위하거나
-            불가피한 사정으로 발생하는 농지의 임대차와 위탁경영은 법률이 정하는
-            바에 의하여 인정된다. 평화통일정책의 수립에 관한 대통령의 자문에
-            응하기 위하여 민주평화통일자문회의를 둘 수 있다, 정부나 법원의
-            권한에 관하여 특별한 조치를 할 수 있다.
-          </li>
-          <li className="message">
-            <span className="name">주권의 제약에</span> 관한 조약. 대한민국은
-            민주공화국이다. 헌법개정안이 제2항의 찬성을 얻은 때에는 헌법개정은
-            확정되며. 다만.
-          </li>
-          <li className="message">
-            <span className="name">모든 국민은:</span> 신체의 자유를 가진다,
-            명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가
-            된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다. 어떠한
-            형태로도 이를 창설할 수 없다. 사영기업을 국유 또는 공유로 이전하거나
-            그 경영을 통제 또는 관리할 수 없다.
-          </li>
-          <li className="message">
-            <span className="name">국무총리:</span> 또는 국무위원이 출석요구를
-            받은 때에는 국무위원 또는 정부위원으로 하여금 출석·답변하게 할 수
-            있다. 대한민국의 경제질서는 개인과 기업의 경제상의 자유와 창의를
-            존중함을 기본으로 한다. 대한민국의 경제질서는 개인과 기업의 경제상의
-            자유와 창의를 존중함을 기본으로 한다. 대통령은 국회에 출석하여
-            발언하거나 서한으로 의견을 표시할 수 있다.
-          </li>
-        </ul>
+        <ul className="classroom-messages">{classroom_messages}</ul>
+        <Formik
+          initialValues={{
+            username: this.props.user,
+            subject: this.props.subject,
+            date: "",
+            parent: this.props.parent,
+          }}
+          onSubmit={(values, actions) => {
+            values.post = this.state.editorContent;
+            try {
+              firebase
+                .database()
+                .ref()
+                .child(this.props.subject.toLowerCase() + "_classroom_queue")
+                .push({
+                  isAdmin: true,
+                  name: this.state.name,
+                  message: values.post,
+                });
+              // console.log(this.state.name, values.post);
+              actions.setSubmitting(false);
+            } catch (err) {
+              console.log(err);
+            }
+          }}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+          }) => (
+            <form onSubmit={handleSubmit}>
+              <div className="row classroom-editor">
+                <Editor
+                  className="math-editor"
+                  id="post"
+                  apiKey="bkx81e9h5xh9bosf6gn8f93ua74txdsu1fneaai2ihdtfg7f"
+                  init={{
+                    height: 200,
+                    menubar: false,
+
+                    branding: false,
+                    // selector:"#postinputtext",
+
+                    plugins: [
+                      "advlist autolink lists link image charmap print preview anchor",
+                      "searchreplace visualblocks code fullscreen",
+                      "insertdatetime media table paste  ",
+                    ],
+                    toolbar:
+                      "undo redo | formatselect | bold italic forecolor backcolor | \
+                       alignleft aligncenter alignright alignjustify | \
+                       bullist numlist outdent indent | removeformat | link image | mathSymbols",
+                  }}
+                  onChange={this.handleEditorChange}
+                  name="post"
+                  onBlur={handleBlur}
+                  value={values.post}
+                />
+              </div>
+              <div
+                className="row classroom-editor preview"
+                style={{
+                  border: "1px solid lightgray",
+                  background: "white",
+                  marginTop: "1rem",
+                }}
+              >
+                {" "}
+                <div
+                  style={{ padding: "20px" }}
+                  rows="5"
+                  dangerouslySetInnerHTML={{ __html: this.state.preview }}
+                />
+              </div>
+              <button type="submit" className="Submit">
+                <p className="Post-buttons">Submit</p>
+              </button>
+
+              {/* {props.errors.name && <div id="feedback">{props.errors.name}</div>} */}
+            </form>
+          )}
+        </Formik>
       </div>
     );
   }

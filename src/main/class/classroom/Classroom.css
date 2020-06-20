@@ -29,13 +29,15 @@
 }
 
 .classroom.CardBody {
-  height: 60vh;
+  height: calc(60vh + 150px);
+  padding-bottom: 150px;
 }
 
 .classroom-messages {
   overflow-x: hidden;
   overflow-y: scroll;
-
+  list-style: decimal;
+  list-style-position: inside;
   height: 60vh;
 }
 .classroom-messages-admin {
@@ -59,17 +61,6 @@ li.message {
   color: black;
 }
 
-li.message-admin {
-}
-.message-display {
-  background: white;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
-  border: 1px solid gainsboro;
-  text-align: left;
-  color: black;
-}
 p.admin-message {
   width: 90%;
 }
@@ -107,34 +98,101 @@ p.admin-message {
   padding: 1rem;
 }
 
-.remove {
-  width: 10px;
-  border: none;
-}
-
 .button-container {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.remove {
-  width: 20px;
-  border: none;
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  background: var(--bg-accent);
-  height: 20px;
-  opacity: 0.3;
-  float: right;
-  margin: 0px;
-  transition: filter 200ms;
-  border: 1px solid black;
+
+.row.classroom-editor {
+  margin: 10px;
+  padding-right: 15px;
 }
 
-.remove:hover {
-  filter: brightness(0.2);
+.row.classroom-editor.preview {
+  margin: 10px;
+  width: auto;
+  padding-right: 10px;
+  margin-right: 25px;
 }
-Times {
-  width: 10px;
+
+li.message-admin {
+  display: flex;
+}
+
+.columns {
+  padding: 12px;
+}
+
+.sendpost {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+}
+
+.sendpost:hover {
+  filter: brightness(0.9);
+}
+
+/* default, clickable */
+
+.columns.message-display {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  text-align: left;
+  color: black;
+  transition: filter 300ms;
+  width: -moz-available;
+}
+.columns.message-display.false0 {
+  background: #ffffff;
+}
+.columns.message-display.false0:hover {
+  filter: brightness(0.9);
+}
+/* light green, clickable*/
+
+.columns.message-display.false1 {
+  background-color: #d9ead3;
+}
+.columns.message-display.false1:hover {
+  filter: brightness(0.9);
+}
+/* light red, clickable */
+.columns.message-display.false2 {
+  background-color: #f4cccc;
+}
+.columns.message-display.false2:hover {
+  filter: brightness(0.9);
+}
+
+.sendpost {
+  border: none;
+  float: right;
+  border-radius: 10px;
+}
+.sendpost:hover {
+  background: white;
+}
+
+.sendpost.false0 {
+  display: none;
+}
+
+.sendpost.false1 {
+  background-color: #d9ead3;
+}
+.sendpost.false1:hover {
+  filter: brightness(0.9);
+}
+.sendpost.false2 {
+  background-color: #f4cccc;
+}
+.sendpost.false2:hover {
+  filter: brightness(0.9);
 }

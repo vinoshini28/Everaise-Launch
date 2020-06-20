@@ -18,7 +18,6 @@ import { ReactComponent as Meteor } from "../img/icons/meteor-solid.svg";
 import { ReactComponent as Microscope } from "../img/icons/microscope-solid.svg";
 import { ReactComponent as Sitemap } from "../img/icons/sitemap-solid.svg";
 
-
 var config = {
   apiKey: "AIzaSyD9A7ncLDqbdgowx76nPr0VzDDeIhSqg2c",
   authDomain: "launch.everaise.org",
@@ -35,7 +34,6 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 const convert = require("./components/classes.json");
 
-
 export default class Main extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +49,6 @@ export default class Main extends Component {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.displayButton = this.displayButton.bind(this);
   }
- 
 
   componentDidMount() {
     var t = this;
@@ -70,9 +67,9 @@ export default class Main extends Component {
                 .auth()
                 .currentUser.getIdToken(true)
                 .then(function (idToken) {
-                  //""
+                  //"""https://launch-8f860.uc.r.appspot.com/roles
                   axios
-                    .post("https://launch-8f860.uc.r.appspot.com/roles", {
+                    .post("http://localhost:9000/roles", {
                       uid: authResult.user.uid,
                     })
                     .then(function (response) {
