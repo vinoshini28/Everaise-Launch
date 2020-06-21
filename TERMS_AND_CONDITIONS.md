@@ -333,11 +333,11 @@ In order to resolve a complaint regarding the Site or to receive further informa
 
   
 
-**Everaise·Academy,·Inc.··
-77·Pond·Ave··
-Brookline,·MA 02445··
-United·States··
-Phone:·5089030768··
+**Everaise Academy, Inc  
+77 Pond Ave  
+Brookline, MA 02445  
+United States  
+Phone: 5089030768   
 admin@everaise.org**
 
 ## License
