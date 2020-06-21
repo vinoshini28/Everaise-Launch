@@ -100,14 +100,16 @@ We may update this privacy notice from time to time. The updated version will be
 ## 10. HOW CAN YOU CONTACT US ABOUT THIS POLICY?
 If you have questions or comments about this policy, you may email us at admin@everaise.org or by post to:
 
-**Everaise Academy, Inc.
-77 Pond Ave
-Brookline, MA 02445
-United States**
+**Everaise Academy, Inc.**
+**77 Pond Ave**
+**Brookline, MA 02445**
+**United States**
+**Phone: 5089030768**
+**admin@everaise.org**
 
 ## HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?
 Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please email us at admin@everaise.org. We will respond to your request within 30 days.
 ## License
 [MIT License](https://github.com/JetChung/Everaise-Launch/blob/master/LICENSE.md)
 
-Copyright (c) 2020 Jet Chung
+Copyright &copy; 2020 Jet Chung
