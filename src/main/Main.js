@@ -67,9 +67,8 @@ export default class Main extends Component {
                 .auth()
                 .currentUser.getIdToken(true)
                 .then(function (idToken) {
-                  //"""https://launch-8f860.uc.r.appspot.com/roles
                   axios
-                    .post("http://localhost:9000/roles", {
+                    .post("https://launch-8f860.uc.r.appspot.com/roles", {
                       uid: authResult.user.uid,
                     })
                     .then(function (response) {
@@ -347,7 +346,7 @@ export default class Main extends Component {
             switch={this.setSubject.bind(this)}
             subject={this.state.subject}
             user={this.state.user}
-            role={this.state.role}
+            isAdmin={this.state.response.isAdmin}
           />{" "}
         </div>
       );

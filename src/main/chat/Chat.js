@@ -14,7 +14,6 @@ export default class Chat extends Component {
       viewShown: false,
       view: "users",
       user: "",
-      role: "admin",
       uid: "",
       chats: {},
       message: "",
@@ -30,31 +29,23 @@ export default class Chat extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.role === "student") {
-      if (this.state.viewShown) {
+    if (this.state.viewShown) {
+      if (this.state.view === "chat") {
         var chats = document.getElementById("chats");
         chats.scrollTop = chats.scrollHeight;
       }
-      //set chat to read if opened
-      // firebase
-      //   .database()
-      //   .ref()
-      //   .child("user_metadata")
-      //   .child(firebase.auth().currentUser.uid)
-      //   .set({
-      //     read: true,
-      //   });
     }
-
-    //admin
-    //check if view === chat, if true and current users chat to read
-    //if new message from user_i and view !== chat or view === chat and user !== user_i
-    //set read false
-    //add a listener on /chat/
-    //if new message from user_i and viww === chat and user === user_i, scroll to bottom and set chat to read
-    //when open user_i, load all chats
   }
   componentDidMount() {
+    firebase
+      .database()
+      .ref()
+      .child("students")
+      .on("value", (snap) => {
+        this.setState({
+          users: snap.val(),
+        });
+      });
     firebase
       .database()
       .ref()
@@ -67,10 +58,9 @@ export default class Chat extends Component {
       });
   }
 
-  setUser(i) {
-    //pass as uid
+  setUser(uid) {
     this.setState({
-      user: i,
+      uid: uid,
       view: "chat",
     });
   }
@@ -165,31 +155,26 @@ export default class Chat extends Component {
   }
   displayView() {
     if (this.state.viewShown) {
-      if (this.state.role === "student") {
-        return this.displayStudent();
-      }
-      if (this.state.role === "admin") {
+      if (this.props.isAdmin) {
         switch (this.state.view) {
           default:
             break;
           case "users":
+            var users_list = [];
+            for (var user in this.state.users) {
+              users_list.push(
+                <li
+                  className="user"
+                  onClick={this.setUser.bind(this, user.uid)}
+                >
+                  {user.name}
+                </li>
+              );
+            }
             return (
               <>
                 <div className="chat-open" id="chat-open">
-                  <ul className="users-container">
-                    <li className="user" onClick={this.setUser.bind(this, 1)}>
-                      User 1
-                    </li>
-                    <li className="user" onClick={this.setUser.bind(this, 2)}>
-                      User 2
-                    </li>
-                    <li className="user" onClick={this.setUser.bind(this, 3)}>
-                      User 3
-                    </li>
-                    <li className="user" onClick={this.setUser.bind(this, 4)}>
-                      User 4
-                    </li>
-                  </ul>
+                  <ul className="users-container">{users_list}</ul>
                 </div>
               </>
             );
@@ -215,7 +200,7 @@ export default class Chat extends Component {
               <>
                 <div className="chat-open" id="chat-open">
                   <a className="back-button" onClick={this.goBack.bind(this)}>
-                    <Back></Back>
+                    <Back className="back-svg"></Back>
                   </a>
                   <div className="chat-container">
                     <ul className="chats" id="chats">
@@ -275,7 +260,7 @@ export default class Chat extends Component {
             );
         }
       } else {
-        return false;
+        return this.displayStudent();
       }
     } else {
       return false;

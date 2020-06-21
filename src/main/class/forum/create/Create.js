@@ -21,10 +21,17 @@ export default class Create extends Component {
 
   renderForm() {}
   handleEditorChange(e) {
-    this.setState({
-      editorContent: e.target.getContent(),
-      preview: e.target.getContent(),
-    });
+    if (e.target.getContent() === "") {
+      this.setState({
+        editorContent: "",
+        preview: "Preview",
+      });
+    } else {
+      this.setState({
+        editorContent: e.target.getContent(),
+        preview: e.target.getContent(),
+      });
+    }
   }
   componentDidUpdate() {
     window.MathJax.typeset();
@@ -165,8 +172,7 @@ export default class Create extends Component {
             >
               {" "}
               <div
-                style={{ padding: "20px" }}
-                rows="5"
+                className="preview"
                 dangerouslySetInnerHTML={{ __html: this.state.preview }}
               />
             </div>

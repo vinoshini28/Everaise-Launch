@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./Classroom.css";
-import { ReactComponent as Back } from "../../../img/icons/chevron-left-solid.svg";
-import Card from "../../components/card/Card.js";
 
 import { ReactComponent as Chart } from "../../../img/icons/chart-line-solid.svg";
 import { ReactComponent as Dice } from "../../../img/icons/dice-d20-solid.svg";
@@ -38,6 +36,7 @@ export default class Classroom extends Component {
     this.getAdminView = this.getAdminView.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.handleEditorChange = this.handleEditorChange.bind(this);
+    this.deleteAll = this.deleteAll.bind(this);
   }
   getHead() {
     var icon;
@@ -76,20 +75,40 @@ export default class Classroom extends Component {
       </div>
     );
   }
+  componentDidUpdate() {
+    window.MathJax.typeset();
+  }
+  deleteAll() {
+    firebase
+      .database()
+      .ref()
+      .child(this.props.subject.toLowerCase() + "_classroom")
+      .set(null);
+    firebase
+      .database()
+      .ref()
+      .child(this.props.subject.toLowerCase() + "_classroom_queue")
+      .set(null);
+  }
   toggleAdminView() {
     this.setState({
       showAdmin: !this.state.showAdmin,
     });
   }
   handleEditorChange(e) {
-    this.setState({
-      editorContent: e.target.getContent(),
-      preview: e.target.getContent(),
-    });
+    if (e.target.getContent() === "") {
+      this.setState({
+        editorContent: "",
+        preview: "Preview",
+      });
+    } else {
+      this.setState({
+        editorContent: e.target.getContent(),
+        preview: e.target.getContent(),
+      });
+    }
   }
-  send() {}
-  addToQueue() {}
-  delete() {}
+
   getAdminView() {
     if (this.state.queue != undefined) {
       var queue_messages = [];
@@ -102,10 +121,9 @@ export default class Classroom extends Component {
                   ? this.state.queue[i].name + " (Instructor)"
                   : this.state.queue[i].name
               }
-              message={this.state.queue[i].message}
-              send={this.send}
-              addToQueue={this.addToQueue}
-              delete={this.delete}
+              object={this.state.queue[i]}
+              key_id={i}
+              subject={this.props.subject}
             ></AdminPost>
           </li>
         );
@@ -117,6 +135,9 @@ export default class Classroom extends Component {
           <a className="gavel-button" onClick={this.toggleAdminView}>
             <Gavel></Gavel>
           </a>
+          <a className="times-button" onClick={this.deleteAll}>
+            <Times></Times>
+          </a>
         </>
       );
     } else {
@@ -124,6 +145,9 @@ export default class Classroom extends Component {
         <>
           <a className="gavel-button" onClick={this.toggleAdminView}>
             <Gavel></Gavel>
+          </a>
+          <a className="times-button" onClick={this.deleteAll}>
+            <Times></Times>
           </a>
           <div className="adminpanel">
             <ul className="classroom-messages-admin">{queue_messages}</ul>
@@ -140,7 +164,7 @@ export default class Classroom extends Component {
       .child(this.props.subject.toLowerCase() + "_classroom")
       .on("value", (snap) => {
         this.setState({
-          classroom_messages: snap.val(),
+          messages: snap.val(),
         });
       });
 
@@ -153,12 +177,11 @@ export default class Classroom extends Component {
           queue: snap.val(),
         });
       });
-    // console.log(this.state.classroom_messages, this.state.queue);
   }
   getBody() {
     if (this.state.messages != undefined) {
       var classroom_messages = [];
-      for (var i = 0; i < this.state.messages.length; i++) {
+      for (var i in this.state.messages) {
         classroom_messages.push(
           <li className="message" id={"classroom_message_" + i}>
             {" "}
@@ -167,7 +190,11 @@ export default class Classroom extends Component {
                 ? this.state.messages[i].name + " (Instructor)"
                 : this.state.messages}
             </span>{" "}
-            {this.state.messages[i].message}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: this.state.messages[i].message,
+              }}
+            ></div>
           </li>
         );
       }
@@ -190,11 +217,10 @@ export default class Classroom extends Component {
                 .ref()
                 .child(this.props.subject.toLowerCase() + "_classroom_queue")
                 .push({
-                  isAdmin: true,
+                  isAdmin: this.props.isAdmin,
                   name: this.state.name,
                   message: values.post,
                 });
-              // console.log(this.state.name, values.post);
               actions.setSubmitting(false);
             } catch (err) {
               console.log(err);
@@ -249,8 +275,7 @@ export default class Classroom extends Component {
               >
                 {" "}
                 <div
-                  style={{ padding: "20px" }}
-                  rows="5"
+                  className="preview"
                   dangerouslySetInnerHTML={{ __html: this.state.preview }}
                 />
               </div>
@@ -283,7 +308,7 @@ export default class Classroom extends Component {
         <div className="CardBody classroom">
           <div className="CardBodyText">{this.getBody()}</div>
         </div>
-        {this.getAdminView()}
+        {this.props.isAdmin ? this.getAdminView() : <></>}
       </>
     );
   }

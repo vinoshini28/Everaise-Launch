@@ -148,7 +148,12 @@ export default class Subject extends Component {
           />
         );
       case "Classroom":
-        return <Classroom subject={this.props.subject} isAdmin={false} />;
+        return (
+          <Classroom
+            subject={this.props.subject}
+            isAdmin={this.props.isAdmin}
+          />
+        );
       case "Home":
         // this.state.switch("Home", this.state.subject);
         break;
@@ -201,7 +206,7 @@ export default class Subject extends Component {
             icon={<Signout />}
           ></NavItem>
         </Navbar>{" "}
-        <Chat></Chat>
+        <Chat isAdmin={this.props.isAdmin}></Chat>
         <br></br>
         <br></br>
         <div className="container">{this.renderSubCategory()}</div>

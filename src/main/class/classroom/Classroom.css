@@ -29,8 +29,7 @@
 }
 
 .classroom.CardBody {
-  height: calc(60vh + 150px);
-  padding-bottom: 150px;
+  padding-bottom: 10px;
 }
 
 .classroom-messages {
@@ -38,7 +37,7 @@
   overflow-y: scroll;
   list-style: decimal;
   list-style-position: inside;
-  height: 60vh;
+  max-height: 50vh;
 }
 .classroom-messages-admin {
   overflow-x: hidden;
@@ -148,9 +147,10 @@ li.message-admin {
   color: black;
   transition: filter 300ms;
   width: -moz-available;
+  background: #f1f1f1;
 }
 .columns.message-display.false0 {
-  background: #ffffff;
+  background: #f1f1f1;
 }
 .columns.message-display.false0:hover {
   filter: brightness(0.9);
@@ -195,4 +195,24 @@ li.message-admin {
 }
 .sendpost.false2:hover {
   filter: brightness(0.9);
+}
+
+.times-button {
+  bottom: 20px;
+  left: 80px;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background-color: var(--nav-color);
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+}
+
+.times-button:hover {
+  filter: brightness(1.2);
 }

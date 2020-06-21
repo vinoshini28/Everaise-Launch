@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: center;
   transition: filter 300ms;
+  z-index: 5;
 }
 .chat-button:hover {
   filter: brightness(1.2);
@@ -23,7 +24,7 @@
   position: fixed;
   width: 30px;
   height: 30px;
-  background-color: #484a4d;
+  background-color: var(--nav-color);
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
@@ -31,6 +32,7 @@
   align-items: center;
   justify-content: center;
   transition: filter 300ms;
+  border: 1px solid black;
 }
 .back-button:hover {
   filter: brightness(1.2);
@@ -40,7 +42,6 @@ svg {
   height: 20px;
   width: 20px;
 }
-
 
 .chat-open {
   position: fixed;
@@ -59,7 +60,7 @@ svg {
 
 .sent {
   border-radius: 20px;
-  background-color: #0084FF;
+  background-color: #0084ff;
   float: right;
   width: 80%;
   align-content: center;
@@ -99,20 +100,23 @@ svg {
   text-align: left;
   margin-top: 5px;
   margin-bottom: 5px;
-  transition: background var(--speed);
+  transition: filter var(--speed);
+  background-color: var(--bg-accent);
+  border: 1px solid black;
 }
 
 .user:hover {
-  background-color: #525357;
+  filter: brightness(1.2);
 }
 .users-container {
-  height:500px;
+  height: 500px;
+  overflow: scroll;
 }
 .chats {
   list-style: none;
   overflow-y: scroll;
   height: 450px;
-  scrollbar-color:  var(--bg-accent) var(--bg);
+  scrollbar-color: var(--bg-accent) var(--bg);
   scrollbar-width: none;
 }
 .chat-container {
@@ -127,7 +131,7 @@ svg {
   bottom: 115px;
   width: 300px;
   height: 30px;
-  background:var(--input-chat-color);
+  background: var(--input-chat-color);
   margin-bottom: 10px;
   margin-top: 10px;
   font-size: 1rem;
@@ -168,10 +172,10 @@ svg {
   transition: all var(--speed) ease;
 }
 
+.user {
+  color: var(--nav-inner);
+}
 
-
-
-
-.user{
-  color:var(--nav-inner)
+.back-svg {
+  color: var(--nav-inner);
 }

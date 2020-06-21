@@ -1,7 +1,7 @@
 /* Global variables */
 :root {
   /* dark */
-/* 
+  /* 
   --bg: #121212;
   --bg-accent: #484a4d;
   --text-color: white;
@@ -63,8 +63,6 @@
   --brownlogo: #775031;
   --yellowlogo: #ecd549;
 }
-
-
 
 .App {
   text-align: center;
@@ -165,7 +163,7 @@ a {
 
 .dropdown {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 58px;
   width: 300px;
   transform: translateX(-45%);
@@ -190,6 +188,17 @@ a {
   margin-left: auto;
 }
 
-button{
-  border-radius:4px;
+button {
+  border-radius: 4px;
+}
+.tox-tinymce {
+  z-index: 0;
+}
+
+.preview {
+  padding: 10px;
+  padding-top:15px;
+  overflow: scroll;
+  width: 100%;
+  height: 200px;
 }
