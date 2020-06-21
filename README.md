@@ -16,6 +16,12 @@ Launch was built from the ground up to have all the features we wanted, and noth
 ### LaTeX enabled forum
 ![](https://scontent.xx.fbcdn.net/v/t1.15752-9/104547017_631148551089236_1515013620827345643_n.png?_nc_cat=104&_nc_sid=b96e70&_nc_ohc=VDPLiiOJhjkAX8oEaDH&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=fab49efcdbf6be93985fec80a723bbe6&oe=5F1025A3)
 
+### Daily office hours to go over new material and questions
+![](https://scontent.xx.fbcdn.net/v/t1.15752-9/104938712_913121059191445_6252236475327498613_n.png?_nc_cat=111&_nc_sid=b96e70&_nc_ohc=iQ6WFJfYfxsAX8q7ePg&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=097cca3bc98a7b32136921c4a98a6890&oe=5F14AFEA)
+
+### And includes moderation to keep discussion on focus
+![](https://scontent.xx.fbcdn.net/v/t1.15752-9/104896370_999059933883233_5609638935981684408_n.png?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=PtOCHWIQbyIAX-ANIRt&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=ca00f3641749aba60917e4f85809e3e8&oe=5F13F10E)
+
 ### Instant chat with instructors
 ![](https://scontent.xx.fbcdn.net/v/t1.15752-9/83297586_308343966870781_861816834679978447_n.png?_nc_cat=102&_nc_sid=b96e70&_nc_ohc=VrebMAHW2asAX8VE-GI&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=fba983b89a28ea9b4e8134301b864d85&oe=5F0F0260)
 
@@ -24,6 +30,7 @@ Launch was built from the ground up to have all the features we wanted, and noth
 
 ### Ah, that's better
 ![](https://scontent.xx.fbcdn.net/v/t1.15752-9/103981130_3172309222814747_3349787127999817077_n.png?_nc_cat=111&_nc_sid=b96e70&_nc_ohc=y5yf2YGpL88AX9ed_97&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=004a3fdebdf7430fac7cb8ddcdb64b52&oe=5F10618E)
+
 ## About Everaise Launch
 
 Launch was built with with the FERN stack (Firebase, Express.js, React, and Node.js) and the Google App Engine. 
