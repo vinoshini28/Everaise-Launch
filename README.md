@@ -16,6 +16,12 @@ Launch was built from the ground up to have all the features we wanted, and noth
 ### LaTeX enabled forum
 ![](https://scontent.xx.fbcdn.net/v/t1.15752-9/104547017_631148551089236_1515013620827345643_n.png?_nc_cat=104&_nc_sid=b96e70&_nc_ohc=VDPLiiOJhjkAX8oEaDH&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=fab49efcdbf6be93985fec80a723bbe6&oe=5F1025A3)
 
+### Daily office hours to go over new material and questions
+![](https://scontent.xx.fbcdn.net/v/t1.15752-9/104938712_913121059191445_6252236475327498613_n.png?_nc_cat=111&_nc_sid=b96e70&_nc_ohc=iQ6WFJfYfxsAX8q7ePg&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=097cca3bc98a7b32136921c4a98a6890&oe=5F14AFEA)
+
+### And includes moderation to keep discussion on focus
+![](https://scontent.xx.fbcdn.net/v/t1.15752-9/104938712_913121059191445_6252236475327498613_n.png?_nc_cat=111&_nc_sid=b96e70&_nc_ohc=iQ6WFJfYfxsAX8q7ePg&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=097cca3bc98a7b32136921c4a98a6890&oe=5F14AFEA)
+
 ### Instant chat with instructors
 ![](https://scontent.xx.fbcdn.net/v/t1.15752-9/83297586_308343966870781_861816834679978447_n.png?_nc_cat=102&_nc_sid=b96e70&_nc_ohc=VrebMAHW2asAX8VE-GI&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=fba983b89a28ea9b4e8134301b864d85&oe=5F0F0260)
 
