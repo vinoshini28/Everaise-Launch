@@ -25,7 +25,7 @@ export default class Classroom extends Component {
     this.state = {
       link: "",
       messages: "",
-      subject: "MathII",
+      subject: this.props.subject,
       showAdmin: true,
       preview: "Preview",
       editorContent: "",
@@ -187,7 +187,7 @@ export default class Classroom extends Component {
             <span className="name">
               {this.state.messages[i].isAdmin
                 ? this.state.messages[i].name + " (Instructor)"
-                : this.state.messages}
+                : this.state.messages[i].name}
             </span>{" "}
             <div
               dangerouslySetInnerHTML={{

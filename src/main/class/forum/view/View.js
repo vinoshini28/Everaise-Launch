@@ -172,7 +172,7 @@ export default class View extends Component {
       if (this.state.zoom === 0) {
         for (var k = this.state.n; k > 0; k--) {
           try {
-            if (this.props.role == "mod") {
+            if (this.props.role === "mod") {
               var headWrap = (
                 <>
                   <div className="row">
@@ -229,7 +229,7 @@ export default class View extends Component {
           } catch (err) {}
         }
       } else {
-        if (this.props.role == "mod") {
+        if (this.props.role === "mod") {
           var headWrap = (
             <>
               <div className="row">
@@ -322,7 +322,7 @@ export default class View extends Component {
             );
 
             for (var i = 0; i < replyKeys.length; i++) {
-              if (this.props.role == "mod") {
+              if (this.props.role === "mod") {
                 var h = (
                   <>
                     <div className="row">

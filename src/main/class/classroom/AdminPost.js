@@ -75,9 +75,9 @@ export default class AdminPost extends Component {
             className={"sendpost " + this.state.isDisabled + this.state.level}
             onClick={this.changeAbility}
           >
-            {this.state.level == 0 ? (
+            {this.state.level === 0 ? (
               <></>
-            ) : this.state.level == 1 ? (
+            ) : this.state.level === 1 ? (
               <Right />
             ) : (
               <Trash />
