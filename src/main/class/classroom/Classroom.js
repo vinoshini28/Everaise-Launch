@@ -217,7 +217,7 @@ export default class Classroom extends Component {
                 .child(this.props.subject.toLowerCase() + "_classroom_queue")
                 .push({
                   isAdmin: this.props.isAdmin,
-                  name: firebase.auth().currentUser.name,
+                  name: this.props.user,
                   message: values.post,
                 });
               actions.setSubmitting(false);

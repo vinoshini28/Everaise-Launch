@@ -152,6 +152,7 @@ export default class Subject extends Component {
           <Classroom
             subject={this.props.subject}
             isAdmin={this.props.isAdmin}
+            user={this.props.user}
           />
         );
       case "Home":
