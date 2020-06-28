@@ -333,14 +333,14 @@ In order to resolve a complaint regarding the Site or to receive further informa
 
   
 
-**Everaise Academy, Inc.
-77 Pond Ave
-Brookline, MA 02445
-United States
-Phone: 5089030768
+**Everaise Academy, Inc  
+77 Pond Ave  
+Brookline, MA 02445  
+United States  
+Phone: 5089030768   
 admin@everaise.org**
 
 ## License
 [MIT License](https://github.com/JetChung/Everaise-Launch/blob/master/LICENSE.md)
 
-Copyright (c) 2020 Jet Chung
+Copyright &copy; 2020 Jet Chung
