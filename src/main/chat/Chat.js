@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { ReactComponent as I } from "../../img/icons/i.svg";
 import { ReactComponent as Back } from "../../img/icons/chevron-left-solid.svg";
 import { Formik } from "formik";
-import * as firebase from "firebase";
+import * as firebase from "firebase/app";
+import "firebase/database";
 
-// import { CSSTransition } from "react-transition-group";
 import "./Chat.css";
 
 export default class Chat extends Component {

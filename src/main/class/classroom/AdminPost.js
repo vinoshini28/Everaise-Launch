@@ -3,7 +3,8 @@ import "./Classroom.css";
 import React, { Component } from "react";
 import { ReactComponent as Right } from "../../../img/icons/arrow-right-solid.svg";
 import { ReactComponent as Trash } from "../../../img/icons/trash-solid.svg";
-import * as firebase from "firebase";
+import * as firebase from "firebase/app";
+import "firebase/database";
 
 export default class AdminPost extends Component {
   constructor(props) {

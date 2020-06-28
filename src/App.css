@@ -116,10 +116,7 @@ ul {
   padding: 0;
 }
 
-a {
-  color: var(--text-color);
-  text-decoration: none;
-}
+
 
 .navbar {
   position: absolute;

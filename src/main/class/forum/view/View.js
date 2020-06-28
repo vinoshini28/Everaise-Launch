@@ -9,8 +9,8 @@ import DisplayPost from "./DisplayPost.js";
 import { Formik } from "formik";
 import { Editor } from "@tinymce/tinymce-react";
 
-import * as firebase from "firebase";
-
+import * as firebase from "firebase/app";
+import "firebase/database";
 const convert = require("../../../components/classes.json");
 
 export default class View extends Component {
@@ -180,7 +180,7 @@ export default class View extends Component {
                       {this.state.data[k]["title"]}
                     </div>
                     <ul>
-                      <li className="nav-item list-thing">
+                      <li key={k} className="nav-item list-thing">
                         <a
                           className="icon-button"
                           onClick={this.zoomPost.bind(this, k)}
@@ -238,7 +238,7 @@ export default class View extends Component {
                 </div>
 
                 <ul>
-                  <li className="nav-item list-thing">
+                  <li key={k} className="nav-item list-thing">
                     <a
                       className="icon-button"
                       onClick={this.zoomPost.bind(this, k)}
@@ -258,7 +258,7 @@ export default class View extends Component {
                   {this.state.data[this.state.zoom]["title"]}{" "}
                 </div>
 
-                <li className="nav-item">
+                <li key={k} className="nav-item">
                   <a
                     className="icon-button"
                     onClick={this.zoomPost.bind(this, k)}
@@ -407,6 +407,9 @@ export default class View extends Component {
                       .push(this.state.user);
 
                     actions.setSubmitting(false);
+                    this.setState({
+                      preview: "Preview",
+                    });
                     document.getElementById("cancel").click();
                   } catch (err) {
                     console.log(err);

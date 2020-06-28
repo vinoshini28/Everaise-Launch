@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Create.css";
 import Card from "../../../components/card/Card.js";
-import * as firebase from "firebase";
-
+import * as firebase from "firebase/app";
+import "firebase/database";
 import { Formik } from "formik";
 import { Editor } from "@tinymce/tinymce-react";
 
@@ -103,6 +103,9 @@ export default class Create extends Component {
               });
 
             actions.setSubmitting(false);
+            this.setState({
+              preview: "Preview",
+            });
             document.getElementById("cancel").click();
           } catch (err) {
             console.log(err);

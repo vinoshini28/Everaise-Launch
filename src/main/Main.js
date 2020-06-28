@@ -6,7 +6,8 @@ import Popup from "./components/popup/Popup.js";
 
 import axios from "axios";
 
-import * as firebase from "firebase";
+import * as firebase from "firebase/app";
+import "firebase/database";
 import * as firebaseui from "firebaseui";
 
 import "./firebaseui-styling.global.css";

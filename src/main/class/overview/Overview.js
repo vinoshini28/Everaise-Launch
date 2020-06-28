@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./Overview.css";
 import Card from "../../components/card/Card.js";
+import * as firebase from "firebase/app";
+import 'firebase/database';
 
 import { ReactComponent as Chart } from "../../../img/icons/chart-line-solid.svg";
 import { ReactComponent as Dice } from "../../../img/icons/dice-d20-solid.svg";
@@ -16,7 +18,26 @@ export default class Overview extends Component {
     super(props);
     this.state = {
       subject: props.subject,
+      calendar: "",
     };
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.getTable = this.getTable.bind(this);
+    this.getBody = this.getBody.bind(this);
+    this.getHead = this.getHead.bind(this);
+  }
+  componentDidMount() {
+    firebase
+      .database()
+      .ref()
+      .child("overview")
+      .child(this.props.subject)
+      .child("calendar")
+      .once("value")
+      .then((snap) => {
+        this.setState({
+          calendar: snap.val(),
+        });
+      });
   }
 
   getHead() {
@@ -58,23 +79,27 @@ export default class Overview extends Component {
   }
 
   getTable() {
-    const calendar = [
+    var cal = [
       <>
         <tr>
           <td>Day</td>
           <td>Date</td>
-
-          <td>Topic</td>
+          <td>Topic and Handout Link</td>
         </tr>
-      </>
+      </>,
     ];
-    for (var i = 0; i < 26; i++) {
-      calendar.push(
+    for (var i in this.state.calendar) {
+      cal.push(
         <>
           <tr>
             <td>{i}</td>
-            <td>{convert[this.props.subject]["calendar"][i]["Date"]}</td>
-            <td>{convert[this.props.subject]["calendar"][i]["Topic"]}</td>
+            <td>{this.state.calendar[i].Date}</td>
+            <td>
+              <a href={this.state.calendar[i].Link}>
+                {this.state.calendar[i].Topic}
+              </a>
+            </td>
+            <td></td>
           </tr>
         </>
       );
@@ -82,11 +107,10 @@ export default class Overview extends Component {
     return (
       <table>
         {" "}
-        <tbody>{calendar}</tbody>
+        <tbody>{cal}</tbody>
       </table>
     );
   }
-
   getBody() {
     return (
       <div className="OverviewContent">
@@ -116,7 +140,7 @@ export default class Overview extends Component {
   render() {
     return (
       <>
-      <Card
+        <Card
           headText={this.getHead()}
           bodyText={this.getBody()}
           color={getComputedStyle(document.documentElement).getPropertyValue(

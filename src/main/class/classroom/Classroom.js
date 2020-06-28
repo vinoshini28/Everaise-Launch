@@ -13,7 +13,8 @@ import { ReactComponent as Times } from "../../../img/icons/times-solid.svg";
 import { Formik } from "formik";
 import { Editor } from "@tinymce/tinymce-react";
 
-import * as firebase from "firebase";
+import * as firebase from "firebase/app";
+import "firebase/database";
 
 import AdminPost from "./AdminPost.js";
 
@@ -113,7 +114,7 @@ export default class Classroom extends Component {
       var queue_messages = [];
       for (var i in this.state.queue) {
         queue_messages.push(
-          <li className="message-admin">
+          <li className="message-admin" key={i}>
             <AdminPost
               username={
                 this.state.queue[i].isAdmin
@@ -182,7 +183,7 @@ export default class Classroom extends Component {
       var classroom_messages = [];
       for (var i in this.state.messages) {
         classroom_messages.push(
-          <li className="message" id={"classroom_message_" + i}>
+          <li className="message" key={i} id={"classroom_message_" + i}>
             {" "}
             <span className="name">
               {this.state.messages[i].isAdmin
@@ -221,6 +222,9 @@ export default class Classroom extends Component {
                   message: values.post,
                 });
               actions.setSubmitting(false);
+              this.setState({
+                preview: "Preview",
+              });
             } catch (err) {
               console.log(err);
             }

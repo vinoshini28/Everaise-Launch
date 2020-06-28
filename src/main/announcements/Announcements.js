@@ -1,11 +1,27 @@
 import React, { Component } from "react";
 import "./Announcements.css";
 import Card from "../components/card/Card.js";
+import * as firebase from "firebase/app";
+import 'firebase/database';
+
 
 export default class Announcements extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+  componentDidMount() {
+    firebase
+      .database()
+      .ref()
+      .child("announcements")
+      .once("value")
+      .then((snap) => {
+        this.setState({
+          announcements: snap.val(),
+        });
+      });
   }
   getHead() {
     return (
@@ -13,10 +29,9 @@ export default class Announcements extends Component {
         <div className="column">
           <h1 className="header">Everaise Academy</h1>
           <h2 className="header">Announcements</h2>
-          
         </div>
         <div className="column">
-        <p className="Forum-icon">
+          <p className="Forum-icon">
             <img className="evlogo" alt="circlogo" src="evcirc.png"></img>
           </p>
         </div>
@@ -24,28 +39,37 @@ export default class Announcements extends Component {
     );
   }
   getBody() {
-    return (
-      <div className="OverviewContent">
-        <div
-          className="CardHeadinner inner"
-          style={{backgroundColor:"#434343"}}
-        >
-          <div className="CardHeadText left">Estimathon</div>
-          <div className="CardHeadText right">Posted June 15</div>
-        </div>
-        <div
-          className="CardBodyinner"
-          style={{
-            background: getComputedStyle(
-              document.documentElement
-            ).getPropertyValue("--cardbg2"),
-          }}
-        >
-          We will be hosting an estimathon with Jane Street! Stay tuned for more
-          details.
-        </div>
-      </div>
-    );
+    var l = [];
+    for (var a in this.state.announcements) {
+      l.push(
+        <li>
+          <div className="OverviewContent">
+            <div
+              className="CardHeadinner inner"
+              style={{ backgroundColor: "#434343" }}
+            >
+              <div className="CardHeadText left">
+                {this.state.announcements[a].title}
+              </div>
+              <div className="CardHeadText right">
+                Posted {this.state.announcements[a].date}
+              </div>
+            </div>
+            <div
+              className="CardBodyinner"
+              style={{
+                background: getComputedStyle(
+                  document.documentElement
+                ).getPropertyValue("--cardbg2"),
+              }}
+            >
+              {this.state.announcements[a].message}
+            </div>
+          </div>
+        </li>
+      );
+    }
+    return <ul>{l}</ul>;
   }
   render() {
     return (
