@@ -43,7 +43,6 @@ export default class Create extends Component {
       <Formik
         initialValues={{
           username: this.props.user,
-          userid: 35149,
           subject: this.props.subject,
           date: "",
           parent: this.props.parent,
@@ -87,7 +86,6 @@ export default class Create extends Component {
               .child(this.state.n + 1)
               .set({
                 username: values["username"],
-                userid: values["userid"],
                 post: values["post"],
                 subject: values["subject"].toLowerCase(),
                 title: values["title"],

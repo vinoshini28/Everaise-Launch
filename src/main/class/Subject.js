@@ -87,7 +87,6 @@ export default class Subject extends Component {
       type: "Overview",
       switch: props.switch,
       subject: props.subject,
-      user: "Jet Chung",
       mod: this.props.role,
     };
     this.types = ["Overview", "Forum", "Classroom"];

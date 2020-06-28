@@ -14,9 +14,10 @@ export default class Chat extends Component {
       viewShown: false,
       view: "users",
       user: "",
-      uid: "",
-      chats: {},
+      uid: firebase.auth().currentUser.uid,
+      chats: "",
       message: "",
+      notify: false,
     };
     this.toggleView = this.toggleView.bind(this);
     this.setUser = this.setUser.bind(this);
@@ -49,16 +50,45 @@ export default class Chat extends Component {
     firebase
       .database()
       .ref()
+      .child("notify")
+      .on("value", (snap) => {
+        this.setState({
+          notify: snap.val(),
+        });
+      });
+
+    if (!this.props.isAdmin) {
+      firebase
+        .database()
+        .ref()
+        .child("chat")
+        .child(this.state.uid)
+        .on("value", (snap) => {
+          this.setState({
+            chats: snap.val(),
+          });
+        });
+    }
+  }
+
+  setUser(uid) {
+    firebase
+      .database()
+      .ref()
+      .child("notify")
+      .update({
+        [uid]: false,
+      });
+    firebase
+      .database()
+      .ref()
       .child("chat")
-      .child(firebase.auth().currentUser.uid)
+      .child(uid)
       .on("value", (snap) => {
         this.setState({
           chats: snap.val(),
         });
       });
-  }
-
-  setUser(uid) {
     this.setState({
       uid: uid,
       view: "chat",
@@ -104,20 +134,26 @@ export default class Chat extends Component {
         </div>
         {/*  */}
         <Formik
-          initialValues={{
-            username: "",
-            sentBy: "student",
-            message: "",
-          }}
+          initialValues={{ message: "" }}
           onSubmit={(values, actions) => {
             try {
-              var uid = firebase.auth().currentUser.uid;
-              firebase.database().ref().child("chat").child(uid).push({
-                sentBy: values.sentBy,
-                uid: uid,
-                username: "",
-                message: values.message,
-              });
+              firebase
+                .database()
+                .ref()
+                .child("chat")
+                .child(this.state.uid)
+                .push({
+                  sentBy: "student",
+                  uid: this.state.uid,
+                  message: values.message,
+                });
+              firebase
+                .database()
+                .ref()
+                .child("notify")
+                .update({
+                  [this.state.uid]: true,
+                });
               actions.setSubmitting(false);
               this.setTextInputRef.current.value = "";
             } catch (err) {
@@ -162,12 +198,20 @@ export default class Chat extends Component {
           case "users":
             var users_list = [];
             for (var user in this.state.users) {
+              var inner =
+                this.state.users[user].class +
+                " " +
+                this.state.users[user].ID +
+                " " +
+                this.state.users[user].studentName;
               users_list.push(
                 <li
-                  className="user"
-                  onClick={this.setUser.bind(this, user.uid)}
+                  className={
+                    this.state.notify[user] ? "user user-notify" : "user"
+                  }
+                  onClick={this.setUser.bind(this, user)}
                 >
-                  {user.name}
+                  {inner}
                 </li>
               );
             }
@@ -181,6 +225,7 @@ export default class Chat extends Component {
 
           case "chat":
             var cl = [];
+
             for (var i in this.state.chats) {
               if (this.state.chats[i].sentBy === "admin") {
                 cl.push(
@@ -210,20 +255,19 @@ export default class Chat extends Component {
                 </div>
                 {/*  */}
                 <Formik
-                  initialValues={{
-                    username: "",
-                    sentBy: "admin",
-                    message: "",
-                  }}
+                  initialValues={{ message: "" }}
                   onSubmit={(values, actions) => {
                     try {
-                      var uid = firebase.auth().currentUser.uid;
-                      firebase.database().ref().child("chat").child(uid).push({
-                        sentBy: values.sentBy,
-                        uid: uid,
-                        username: "",
-                        message: values.message,
-                      });
+                      firebase
+                        .database()
+                        .ref()
+                        .child("chat")
+                        .child(this.state.uid)
+                        .push({
+                          sentBy: "admin",
+                          uid: this.state.uid,
+                          message: values.message,
+                        });
                       actions.setSubmitting(false);
                       this.setTextInputRef.current.value = "";
                     } catch (err) {

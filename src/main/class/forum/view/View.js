@@ -377,7 +377,6 @@ export default class View extends Component {
               <Formik
                 initialValues={{
                   username: this.props.user,
-                  userid: 35149,
                   subject: this.props.subject,
                   date: "",
                   parent: this.props.parent,

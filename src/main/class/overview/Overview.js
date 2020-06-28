@@ -66,7 +66,7 @@ export default class Overview extends Component {
 
           <td>Topic</td>
         </tr>
-      </>,
+      </>
     ];
     for (var i = 0; i < 26; i++) {
       calendar.push(

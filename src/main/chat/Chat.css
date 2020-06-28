@@ -95,14 +95,17 @@ svg {
   width: 90%;
   align-content: center;
   display: flex;
-  padding: 15px;
+  padding: 14px;
   color: white;
   text-align: left;
   margin-top: 5px;
+  border: 1px solid black;
   margin-bottom: 5px;
   transition: filter var(--speed);
   background-color: var(--bg-accent);
-  border: 1px solid black;
+}
+.user-notify {
+  background-color: #ff3030;
 }
 
 .user:hover {
@@ -111,6 +114,8 @@ svg {
 .users-container {
   height: 500px;
   overflow: scroll;
+  scrollbar-color: white var(--bg);
+  scrollbar-width: none;
 }
 .chats {
   list-style: none;
@@ -178,4 +183,11 @@ svg {
 
 .back-svg {
   color: var(--nav-inner);
+}
+.alert {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: red;
+  opacity: 70%;
 }

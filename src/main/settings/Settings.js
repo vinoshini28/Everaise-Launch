@@ -62,17 +62,6 @@ export default class Settings extends Component {
               <div className="container">
                 <div className="row row-full">
                   <div className="column">
-                    <h3 className="settings-text">Notifications</h3>
-                  </div>
-                  <div className="column">
-                    <label className="switch">
-                      <input type="checkbox"></input>
-                      <span className="slider round"></span>
-                    </label>
-                  </div>
-                </div>
-                <div className="row row-full">
-                  <div className="column">
                     <h3 className="settings-text">
                       Color theme: {this.state.isDark ? "dark" : "light"}
                     </h3>

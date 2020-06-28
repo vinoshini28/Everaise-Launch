@@ -255,17 +255,17 @@ export default class Main extends Component {
       } else {
         var message = (
           <>
-            <h2 className="warning-text-header">Something went wrong</h2>
-            <p className="warning-text">
+            <h2 className="warning-text-header">
+              {" "}
               Your account has not been activated yet.
-            </p>
-            <p className="warning-text">Please try again later.</p>
+            </h2>
+            <p className="warning-text">Please try again in two days.</p>
             <p className="warning-text">
               Email{" "}
               <a href="mailto:admin@everaise.org" className="mail">
                 admin@everaise.org
               </a>{" "}
-              if this error persists.
+              if your account has not been activated in two days.
             </p>
             <div style={{ display: "none" }} id="firebaseui-auth-container">
               {" "}

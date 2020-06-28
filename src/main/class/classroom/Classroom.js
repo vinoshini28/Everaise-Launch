@@ -109,7 +109,7 @@ export default class Classroom extends Component {
   }
 
   getAdminView() {
-    if (this.state.queue != undefined) {
+    if (this.state.queue !== undefined) {
       var queue_messages = [];
       for (var i in this.state.queue) {
         queue_messages.push(
@@ -178,7 +178,7 @@ export default class Classroom extends Component {
       });
   }
   getBody() {
-    if (this.state.messages != undefined) {
+    if (this.state.messages !== undefined) {
       var classroom_messages = [];
       for (var i in this.state.messages) {
         classroom_messages.push(
