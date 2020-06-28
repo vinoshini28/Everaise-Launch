@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/static/css/main.01aea80c.chunk.css",
+    "main.js": "/static/js/main.6e1fe20d.chunk.js",
+    "main.js.map": "/static/js/main.6e1fe20d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.40dbc267.js",
+    "runtime-main.js.map": "/static/js/runtime-main.40dbc267.js.map",
+    "static/js/2.1392d1a7.chunk.js": "/static/js/2.1392d1a7.chunk.js",
+    "static/js/2.1392d1a7.chunk.js.map": "/static/js/2.1392d1a7.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.2b0c342804a5c09d8041b75bd47bf894.js": "/precache-manifest.2b0c342804a5c09d8041b75bd47bf894.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.01aea80c.chunk.css.map": "/static/css/main.01aea80c.chunk.css.map",
+    "static/js/2.1392d1a7.chunk.js.LICENSE.txt": "/static/js/2.1392d1a7.chunk.js.LICENSE.txt",
+    "static/media/arrow-right-solid.3aa5dcbc.svg": "/static/media/arrow-right-solid.3aa5dcbc.svg",
+    "static/media/bell-solid.80981f50.svg": "/static/media/bell-solid.80981f50.svg",
+    "static/media/binoculars.042d1a07.svg": "/static/media/binoculars.042d1a07.svg",
+    "static/media/caret.8bad8773.svg": "/static/media/caret.8bad8773.svg",
+    "static/media/chart-line-solid.77ae3e33.svg": "/static/media/chart-line-solid.77ae3e33.svg",
+    "static/media/chevron-left-solid.dc880f17.svg": "/static/media/chevron-left-solid.dc880f17.svg",
+    "static/media/cog.9f07a3df.svg": "/static/media/cog.9f07a3df.svg",
+    "static/media/comments.08515c4f.svg": "/static/media/comments.08515c4f.svg",
+    "static/media/dice-d20-solid.f9d91388.svg": "/static/media/dice-d20-solid.f9d91388.svg",
+    "static/media/exclamation-triangle-solid.a35f82b9.svg": "/static/media/exclamation-triangle-solid.a35f82b9.svg",
+    "static/media/gavel-solid.d483299d.svg": "/static/media/gavel-solid.d483299d.svg",
+    "static/media/home-solid.fa2c07da.svg": "/static/media/home-solid.fa2c07da.svg",
+    "static/media/i.17861ffe.svg": "/static/media/i.17861ffe.svg",
+    "static/media/meteor-solid.761f1d44.svg": "/static/media/meteor-solid.761f1d44.svg",
+    "static/media/microscope-solid.192188fb.svg": "/static/media/microscope-solid.192188fb.svg",
+    "static/media/rocket-solid.5f68992b.svg": "/static/media/rocket-solid.5f68992b.svg",
+    "static/media/school.3c915227.svg": "/static/media/school.3c915227.svg",
+    "static/media/sign-out.144ff030.svg": "/static/media/sign-out.144ff030.svg",
+    "static/media/sitemap-solid.604984f9.svg": "/static/media/sitemap-solid.604984f9.svg",
+    "static/media/times-solid.2c5552a1.svg": "/static/media/times-solid.2c5552a1.svg",
+    "static/media/trash-solid.a3e4c2f7.svg": "/static/media/trash-solid.a3e4c2f7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.40dbc267.js",
+    "static/js/2.1392d1a7.chunk.js",
+    "static/css/main.01aea80c.chunk.css",
+    "static/js/main.6e1fe20d.chunk.js"
+  ]
+}
